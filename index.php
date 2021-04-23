@@ -5,7 +5,7 @@ echo('<!DOCTYPE html>');
 ?>
 <?php
 if(!isset($_GET['lang']) || !isset($_COOKIE['choosenlanguage'])){
-    setcookie("choosenlanguage","en-gb");
+    setcookie("choosenlanguage","en-gb", time() + (86400 * 365),);
 }
 ?>
 <?php
