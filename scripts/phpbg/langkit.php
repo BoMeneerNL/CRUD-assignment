@@ -1,11 +1,13 @@
 <?php
 function langkit($text,$lang){
     switch ($text){
-        case "menu_1":
+        case "mainpage":
             switch ($lang){
                 case "nl":
-                    echo('');
+                    echo('Hoofdpagina');
                     break;
+                case "en-gb":
+                    echo("main page");
             }
     }
 }

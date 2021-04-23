@@ -1,6 +1,12 @@
 
 <?php //This file only contains loader, no page data (exception of title) is handled or added on this page
 session_start();
+echo('<!DOCTYPE html>');
+?>
+<?php
+if(!isset($_GET['lang']) || !isset($_COOKIE['choosenlanguage'])){
+    setcookie("choosenlanguage","en-gb");
+}
 ?>
 <?php
 //serve worker
@@ -13,7 +19,6 @@ else{
 
     switch ($_GET['serve']){
         case "welcome":
-            setcookie("nav",true);
             include_once "scripts/phpstatic/welcome.php";
             break;
         case "login":

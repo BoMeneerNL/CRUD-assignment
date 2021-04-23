@@ -1,12 +1,16 @@
 <?php
 echo('
 <html>
+<head>
 <link rel="stylesheet" href="scripts/css/tailwind.css">
+</head>
+<body>
 <nav class="bg-gray-800">
   <div class="w-11/12 h-16">
     ');
 jefferserve($_GET['serve']);
 echo('
+
 <div class="fixed right-10 top-10">
       <p class="text">test</p>
     </div>
