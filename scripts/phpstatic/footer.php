@@ -1,1 +1,3 @@
-<?php echo('</body>');
+<?php echo('
+</body>
+');
