@@ -1,2 +1,2 @@
 The folder "sql-pdo" is a folder where all SQL/PDO Actions are done
-all sql credentials are stored in "secureit.php"
+all sql credentials are stored in "$root/scripts/phpbg/sql-pdo/secureit.php"
