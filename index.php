@@ -11,7 +11,6 @@ function defgb($icallh){
         header("location: index?serve=welcome");
     } else if($icallh == 1){
         setcookie("choosenlanguage",$_GET['lang'],time() + (86400 * 365));
-        header("location: index?serve=" . $_SESSION['serve']);
     }
 }
 ?>
@@ -40,9 +39,9 @@ if(!isset($_GET['lang'])) {
 else if($_GET['lang'] != "en"){
     $_SESSION['serve'] = $_GET['serve'];
     match ($_GET['lang']){
-        "nl","de","en" => defgb(1),
-        default => header("location: index?serve=" . $_GET['serve']),
+        "nl"/*,"de"*/,"en" => defgb(1),
     };
+    header("location: index?serve=" . $_SESSION['serve']);
 }
 else if($_GET['lang'] == "en"){
     if($_COOKIE['choosenlanguage'] != "en"){

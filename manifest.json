@@ -1,0 +1,6 @@
+{
+  "name": "CRUD-Assignment",
+  "display": "browser",
+  "scope": "/",
+  "start_url": "/pwa.html"
+}

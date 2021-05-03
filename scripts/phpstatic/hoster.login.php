@@ -6,8 +6,18 @@ switch ($_SESSION['loginstack']){
         echo('
         <div class="min-h-screen bg-gray-50">
     <div class="flaglangcontainer">
-        <div id="nl">
-            <img class="rounded" alt="nl_flag_change_language" src="assets/img/flags/nl.svg" width="100" height="100">
+        <div id="text">
+    
+        </div>
+        <div id="nl" class="mx-1 mt-1">
+            <a href="index?serve=login&lang=nl">
+                <img class="rounded" alt="nl_flag_change_language" src="assets/img/flags/nl.svg" width="50" height="50">
+            </a>
+        </div>
+        <div id="en" class="mx-1 mt-1">
+            <a href="index?serve=login&lang=en">
+                <img class="rounded" alt="nl_flag_change_language" src="assets/img/flags/en.svg" width="50" height="50">
+            </a>
         </div>
     </div>
     <div class="items-center justify-center flex py-10 px-4 sm:px-6 lg:px-8">
@@ -34,7 +44,6 @@ switch ($_SESSION['loginstack']){
                             placeholder="'.langkit("password",$_COOKIE['choosenlanguage']).'">
                     </div>
                 </div>
-
                 <div class="flex items-center justify-between">
                     <div class="text-sm">
                         <a href="index?serve=forgotpassword_intership"
@@ -43,7 +52,6 @@ switch ($_SESSION['loginstack']){
                         </a>
                     </div>
                 </div>
-
                 <div>
                     <button type="submit"
                         class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
