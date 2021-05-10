@@ -1,8 +1,10 @@
 <?php
 $titleconcat = "CRUD opdracht - " . $_GET["serve"];
+if(isset($_COOKIE['choosenlanguage'])){$lang = $_COOKIE['choosenlanguage'];}
+else{$lang = "en";}
 echo('
 <!DOCTYPE html>
-<html lang="'.$_COOKIE['choosenlanguage'].'">
+<html lang="'.$lang.'">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">

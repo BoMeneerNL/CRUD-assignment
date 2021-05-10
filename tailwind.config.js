@@ -5,10 +5,14 @@ module.exports = {
   },
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
-  },
+    extend: {
+      height: {
+        "h-32": '32px'
+      },
+    },
   variants: {
     extend: {},
   },
   plugins: [],
+},
 }

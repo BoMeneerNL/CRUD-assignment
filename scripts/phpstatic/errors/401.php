@@ -1,5 +1,5 @@
 <?php
-if($_SESSION["error"] == "true,401"){
+if($_SESSION["error"] == "true401"){
     echo('
 <h3>Oops, your username or password is not found</h3>
 <h3>if you lost your password <a>click here</a></h3>
