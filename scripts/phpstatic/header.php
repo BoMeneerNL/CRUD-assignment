@@ -10,4 +10,6 @@ echo('
         <meta name="description" content="JPI">
         <link rel="stylesheet" href="scripts/css/tailwind.css">
         <title>'.$titleconcat.'</title>
+    </head>
+    <body>
 ');

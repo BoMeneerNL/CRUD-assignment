@@ -21,7 +21,26 @@
 .flaglangcontainer{
     top: 100px;
     right: 50px;
+    width: auto;
 }
 .oneflag{
+
+}
+#loading {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9001;
+    width: 100%;
+    height: 100%;
+    background-color: gray;
+    background-image: url("../../assets/Graphical_Moving_Images/loader.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 10px;
+    overflow: hidden;
+}
+body{
 
 }

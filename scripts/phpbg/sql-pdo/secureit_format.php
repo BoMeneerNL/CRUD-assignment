@@ -1,11 +1,9 @@
 <?php
 //everything between the %% (including the %) needs to be changed with your data
-function YourFunctionName($action){
-    return match ($action){
-
-        //for the output use the file asking for this info
-        "%action to check%" => "%SQL database location%;%SQL database%;%SQL user%;%SQL user password%",
+//%database host% is the link to the database like localhost,127.0.0.1,db.example.com etc.
+function gdbname($act): string
+{
+    return match ($act){
+        "action1","action2","action3" => "%database host%;%database table%;%sql user username%;%sql user password%",
     };
 }
-
-?>

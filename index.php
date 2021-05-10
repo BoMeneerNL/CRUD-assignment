@@ -15,7 +15,7 @@ function defgb($icallh){
 }
 ?>
 <?php
-if(!isset($_GET['lang']) && !isset($_COOKIE['choosenlanguage'])){
+if(!isset($_GET['lang'],$_COOKIE['choosenlanguage'])){
     setcookie("choosenlanguage","en", time() + (86400 * 365));
 }
 else{
@@ -33,7 +33,8 @@ if(!isset($_GET['lang'])) {
 	    "login_company" => include_once "scripts/phpstatic/comp.login.php",
         "forgotpassword_intership" => include_once "scripts/phpstatic/forgotpassword.php",
         "loginchecker" => include_once "scripts/phpbg/checkuser.php",
-        default => defgb(0),
+        "error_401" => include_once "scripts/phpstatic/errors/401.php",
+        default => include_once "scripts/phpstatic/errors/404.php",
     };
 }
 else if($_GET['lang'] != "en"){
