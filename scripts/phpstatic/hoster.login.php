@@ -11,18 +11,6 @@ switch ($_SESSION['loginstack']) {
             <div class="hover:bg-gray-500 rounded p-3"><img src="assets/img/clogin_com.svg" alt="company_logo_changelogintype" width="25" height="25"><p>' . langkit("chlogin_com") . '</p></div>
             <div></div>
         </div>
-            <div class="flaglangcontainer">
-                <div id="nl" class="mx-3">
-                    <a href="index?serve=login&lang=nl">
-                        <img class="rounded" alt="nl_flag_change_language" src="assets/img/flags/nl.svg" width="40" height="40">
-                    </a>
-                </div>
-                <div id="en" class="mx-3 mt-1">
-                    <a href="index?serve=login&lang=en">
-                        <img class="rounded" alt="nl_flag_change_language" src="assets/img/flags/en.svg" width="40" height="40">
-                    </a>
-                </div>
-            </div>
             <div class="items-center justify-center flex px-4 sm:px-6 lg:px-8">
                 <div class="max-w-md w-full space-y-8">
                     <div>
