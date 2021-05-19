@@ -17,7 +17,7 @@ if($_SESSION["error"] == "true401"){
 }
 else{
     echo('
-        <p>This error page is not accessable, probbably you were redirected without error confirmation</p>
+        <p>This error page is not accessible, probably you were redirected without error confirmation</p>
     
     ');
 }

@@ -14,6 +14,4 @@ include_once 'secureit.php';
                 break;
         }
     }
-
-
 ?>
