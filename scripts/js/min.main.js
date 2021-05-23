@@ -1,0 +1,1 @@
+function clikr(e){switch(e){case"accept_cookies":Cookies.set("cookieaccepted","yes",{expires:365}),location.reload()}}

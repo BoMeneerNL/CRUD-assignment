@@ -1,6 +1,7 @@
 function clikr(func){
     switch (func){
         case "accept_cookies":
-            setcookie()
+            Cookies.set('cookieaccepted', 'yes', { expires: 365 })
+            location.reload();
     }
 }

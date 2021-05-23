@@ -3,7 +3,7 @@
 session_start();
 
 include_once "scripts/phpstatic/header.php";
-if(isset($_COOKIE['cookieaccepted'])){
+if(isset($_COOKIE['cookieaccepted']) && $_COOKIE['cookieaccepted'] == "yes"){
     if(!isset($_GET['lang']) && !isset($_COOKIE['choosenlanguage'])){
         setcookie("choosenlanguage","en", time() + (86400 * 365));
     }
@@ -34,6 +34,7 @@ match ($_GET['serve']) {
     "forgotpassword_intership" => include_once "scripts/phpstatic/forgotpassword.php",
     "loginchecker" => include_once "scripts/phpbg/checkuser.php",
     "error_401" => include_once "scripts/phpstatic/errors/401.php",
+    "register" => header("Location: register?step=1"),
     default => include_once "scripts/phpstatic/errors/404.php",
     };
 

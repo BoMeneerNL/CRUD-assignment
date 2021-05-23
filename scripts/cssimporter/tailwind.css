@@ -17,15 +17,6 @@
 .dropdown:hover .dropdown-content {
     display: block;
 }
-
-.flaglangcontainer{
-    top: 100px;
-    right: 50px;
-    width: auto;
-}
-.oneflag{
-
-}
 #loading {
     display: block;
     position: absolute;

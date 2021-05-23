@@ -1,19 +1,13 @@
 <?php
-$titleconcat = "CRUD opdracht - " . $_GET["serve"];
+$titleconcat = "CRUD opdracht - " . basename($_SERVER['SCRIPT_NAME'], '.php');
 if (isset($_COOKIE['choosenlanguage'])) {
     $lang = $_COOKIE['choosenlanguage'];
 } else {
     $lang = "en";
 }
-if ($_GET['serve'] == "login"){
-    $htmltag = '<html class = "bg-gray-50" lang="'.$lang.'">';
-}
-else{
-    $htmltag = '<html lang="'.$lang.'">';
-}
 echo('
 <!DOCTYPE html>
-'.$htmltag.'
+<html lang="'.$lang.'">;
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,6 +15,5 @@ echo('
         <meta name="description" content="IJP">
         <link rel="stylesheet" href="scripts/css/tailwind.css">
         <title>' . $titleconcat . '</title>
-    </head>
     <body class="min-h-screen">
 ');
