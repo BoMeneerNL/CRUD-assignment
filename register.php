@@ -1,13 +1,36 @@
 <?php
+include_once "scripts/phpbg/sql-pdo/getuserdat.php";
+include_once "scripts/phpbg/langhandler.php";
 include_once "scripts/phpstatic/ntse.header.php";
 if(isset($_GET['step'])){
-while($_GET['step'] != "done")
-switch ($_GET['step']){
-    case 1:
-        echo('
+    switch ($_GET['step']){
+        case 1:
+            if(isset($_GET['redo'])){
+                if($_GET['redo'] == "yes"){
 
-        ');
+                }
+            }
+            else{
+                echo('
+                    <div id="wrapper" class="bg-">
+                    </div>
+                ');
+            }
+            break;
+        case "1validate":
+            if(isset($_POST["username"])){
+                echo('Validating... Please wait');
+                print(checkusernameexistence("Fuck","regcheck"));
+                $_POST['username'] == null;
+            }
+            else{
+                echo('<p>Oops, something went wrong. Go back to <a href="index">"mainpage"</a> or <a>"register (step 1)"?</a></p>');
+            }
+            break;
+    }
 }
+else{
+    header("location: register?step=0");
 }
 echo('
 <script src="scripts/js/cookies-yum.js"></script>

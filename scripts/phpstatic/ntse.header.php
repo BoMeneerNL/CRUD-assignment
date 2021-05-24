@@ -1,13 +1,20 @@
 <?php
+error_reporting(E_ERROR | E_PARSE);
 $titleconcat = "CRUD opdracht - " . basename($_SERVER['SCRIPT_NAME'], '.php');
 if (isset($_COOKIE['choosenlanguage'])) {
     $lang = $_COOKIE['choosenlanguage'];
 } else {
     $lang = "en";
 }
+if (basename($_SERVER['SCRIPT_NAME'], '.php') == "register"){
+    $htmltag = '<html class = "bg-gray-50" lang="'.$lang.'">';
+}
+else{
+    $htmltag = '<html lang="'.$lang.'">';
+}
 echo('
 <!DOCTYPE html>
-<html lang="'.$lang.'">;
+'.$htmltag.'
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">

@@ -22,5 +22,5 @@ echo('
         <link rel="stylesheet" href="scripts/css/tailwind.css">
         <title>' . $titleconcat . '</title>
     </head>
-    <body class="min-h-screen">
+    <body class="h-screen">
 ');

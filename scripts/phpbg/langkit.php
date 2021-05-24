@@ -9,9 +9,7 @@ function langkit($text): string
 
     return match ($text) {
         "change_lang" => match($lang){"nl" => "Taal veranderen:","de" => "",default => "Change language:"},
-        "login_internship_header" => match ($lang) {"nl" => "Login voor stagiaires","de" =>"",default => "Sign in for interns"},
-        "login_educator_header" => match ($lang){"nl" => "Login voor scholen","de" =>"",default => "Sign in for educators"},
-        "login_companies_header" => match ($lang){"nl" => "Login voor entiteiten","de" =>"",default => "Sign in for entities",},
+        "login_header" => match ($lang) {"nl" => "Login","de" =>"",default => "Sign in"},
         "email_address" => match ($lang) {"nl" => "Email adres","de" =>"",default => "Email address",},
         "password" => match ($lang) {"nl" => "Wachtwoord","de" =>"",default => "Password",},
         "forgot_password" => match ($lang) {"nl" => "Wachtwoord vergeten?","de" =>"",default => "Forgot your password?",},
