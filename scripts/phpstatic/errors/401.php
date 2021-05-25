@@ -1,4 +1,5 @@
 <?php
+include_once "scripts/phpbg/langkit.php";
 if($_SESSION["error"] == "true401"){
     echo('
 <h3>Oops, your username or password is not found</h3>
@@ -22,4 +23,4 @@ else{
     ');
 }
 
-include_once "../footer.php";
+include_once "scripts/phpstatic/footer.php";

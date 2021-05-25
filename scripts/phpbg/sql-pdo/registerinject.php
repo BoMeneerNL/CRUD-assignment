@@ -1,5 +1,6 @@
 <?php
-function injecting($username,$email,$hashpass,$tel){
-    $username = base64_encode($username);
-    $email = base64_encode($email);
+function injector(){
+    $username = base64_encode($_SESSION['reg_username']);
+    $email = base64_encode($_SESSION['reg_email']);
+    $password = base64_encode($_SESSION['reg_password']);
 }

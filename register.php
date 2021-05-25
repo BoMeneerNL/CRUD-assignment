@@ -4,23 +4,34 @@ include_once "scripts/phpbg/langhandler.php";
 include_once "scripts/phpstatic/ntse.header.php";
 if(isset($_GET['step'])){
     switch ($_GET['step']){
-        case 1:
-            if(isset($_GET['redo'])){
-                if($_GET['redo'] == "yes"){
+        case 0:
 
+
+
+
+
+            break;
+        case 1:
+            if(isset($_SESSION['redo'])){
+                if($_SESSION['redo'] == "yes"){
+                $bordercolour = "ijp-3";
+                }
+                else{
+                    $bordercolour = "ijp-2";
                 }
             }
             else{
-                echo('
-                    <div id="wrapper" class="bg-">
+                $bordercolour = "ijp-2";
+            }
+            echo('
+                    <div id="wrapper" class="border-'.$bordercolour.'">
                     </div>
                 ');
-            }
             break;
         case "1validate":
             if(isset($_POST["username"])){
                 echo('Validating... Please wait');
-                print(checkusernameexistence("Fuck","regcheck"));
+                echo(checkusernameexistence("regcheck"));
                 $_POST['username'] == null;
             }
             else{

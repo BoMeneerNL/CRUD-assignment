@@ -10,6 +10,7 @@ function langkit($text): string
     return match ($text) {
         "change_lang" => match($lang){"nl" => "Taal veranderen:","de" => "",default => "Change language:"},
         "login_header" => match ($lang) {"nl" => "Login","de" =>"",default => "Sign in"},
+        "username" => match($lang){"nl" => "Gebruikersnaam",default => "Username"},
         "email_address" => match ($lang) {"nl" => "Email adres","de" =>"",default => "Email address",},
         "password" => match ($lang) {"nl" => "Wachtwoord","de" =>"",default => "Password",},
         "forgot_password" => match ($lang) {"nl" => "Wachtwoord vergeten?","de" =>"",default => "Forgot your password?",},
