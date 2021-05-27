@@ -1,0 +1,25 @@
+<?php
+function country_reg(){
+    $country_nl = ["Afghanistan","Albanië","Algerije","Andorra","Angola","Antigua en Barbuda","Argentinië","Armenië","Australië","Azerbeidzjan","Bahama's","Bahrein","Bangladesh","Barbados","België","Belize","Benin","Bhutan","Bolivia","Bosnië en Herzegovina","Botswana","Brazilië","Brunei","Bulgarije","Burkina Faso","Burundi","Cambodja","Canada","Centraal-Afrikaanse Republiek","Chili","China","Colombia","Comoren","Congo-Brazzaville","Congo-Kinshasa","Costa Rica","Cuba","Cyprus","Denemarken","Djibouti","Dominica","Dominicaanse Republiek","Duitsland","Ecuador","Egypte","El Salvador","Equatoriaal-Guinea","Eritrea","Estland","Ethiopië","Fiji","Filipijnen","Finland","Frankrijk","Gabon","Gambia","Georgië","Ghana","Grenada","Griekenland","Guatemala","Guinee","Guinee-Bissau","Guyana","Haïti","Honduras","Hongarije","Ierland","IJsland","India","Indonesië","Irak","Iran","Israël","Italië","Ivoorkust","Jamaica","Japan","Jemen","Jordanië","Kaapverdië","Kameroen","Kazachstan","Kenia","Kirgizië","Kiribati","Koeweit","Kosovo","Kroatië","Laos","Lesotho","Letland","Libanon","Liberia","Libië","Liechtenstein","Litouwen","Luxemburg","Madagaskar","Malawi","Maldiven","Maleisië","Mali","Malta","Marokko","Marshalleilanden","Mauritanië","Mauritius","Mexico","Micronesia","Moldavië","Monaco","Mongolië","Montenegro","Mozambique","Myanmar","Namibië","Nauru","Nederland","Nepal","Nicaragua","Nieuw-Zeeland","Niger","Nigeria","Noord-Korea","Noord-Macedonië","Noorwegen","Oeganda","Oekraïne","Oezbekistan","Oman","Oostenrijk","Oost-Timor","Pakistan","Palau","Palestina","Panama","Papoea-Nieuw-Guinea","Paraguay","Peru","Polen","Portugal","Qatar","Roemenië","Rusland","Rwanda","Saint Kitts en Nevis","Saint Lucia","Saint Vincent en de Grenadines","Salomonseilanden","Samoa","San Marino","Sao Tomé en Principe","Saoedi-Arabië","Senegal","Servië","Seychellen","Sierra Leone","Singapore","Slovenië","Slowakije","Soedan","Somalië","Spanje","Sri Lanka","Suriname","Swaziland","Syrië","Tadzjikistan","Tanzania","Thailand","Togo","Tonga","Trinidad en Tobago","Tsjaad","Tsjechië","Tunesië","Turkije","Turkmenistan","Tuvalu","Uruguay","Vanuatu","Vaticaanstad","Venezuela","Verenigd Koninkrijk","Verenigde Arabische Emiraten","Verenigde Staten","Vietnam","Wit-Rusland","Zambia","Zimbabwe","Zuid-Afrika","Zuid-Korea","Zuid-Soedan","Zweden","Zwitserland"];
+    $country_en = ["Afghanistan","Albania","Algeria","Andorra","Angola","Antigua and Barbuda","Argentina","Armenia","Australia","Austria","Azerbaijan","The Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bhutan","Bolivia","Bosnia and Herzegovina","Botswana","Brazil","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Canada","Cape Verde","Central African Republic","Chad","Chile","China","Colombia","Comoros","Congo-Brazzaville","Congo-Kinshasa","Costa Rica","Croatia","Cuba","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","East Timor","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Eswatini","Ethiopia","Fiji","Finland","France","Gabon","Gambia","Georgia","Germany","Ghana","Greece","Grenada","Guatemala","Guinea","Guinea-Bissau","Guyana","Haiti","Honduras","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Israel","Italy","Ivory Coast","Jamaica","Japan","Jordan","Kazakhstan","Kenya","Kiribati","Kosovo","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico","Micronesia","Moldova","Monaco","Mongolia","Montenegro","Morocco","Mozambique","Myanmar","Namibia","Nauru","Nepal","Netherlands","New Zealand","Nicaragua","Niger","Nigeria","North Korea","North Macedonia","Norway","Oman","Pakistan","Palau","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Qatar","South Korea","Romania","Russia","Rwanda","Saint Kitts and Nevis","Saint Lucia","Saint Vincent and the Grenadines","Samoa","San Marino","São Tomé and Príncipe","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka","Sudan","Suriname","Sweden","Switzerland","Syria","Tajikistan","Tanzania","Thailand","Togo","Tonga","Trinidad and Tobago","Tunisia","Turkey","Turkmenistan","Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States","Uruguay","Uzbekistan","Vanuatu","Vatican City","Venezuela","Vietnam","Yemen","Zambia","Zimbabwe"];
+    if(isset($_COOKIE['choosenlanguage'])){
+        if($_COOKIE['choosenlanguage'] == "en"){
+            while($counter <= count($country_en) - 1){
+                echo $country_en[$counter];
+                echo("<br>");
+                $counter++;
+            }
+        }
+        else if($_COOKIE['choosenlanguage'] == "nl"){
+            while($counter <= count($country_nl) - 1){
+                echo $country_nl[$counter];
+                $counter++;
+            }
+        }
+
+    }
+    else{
+
+    }
+
+}

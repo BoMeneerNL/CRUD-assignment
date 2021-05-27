@@ -5,3 +5,9 @@ function clikr(func){
             location.reload();
     }
 }
+function ldr(func){
+    switch (func){
+        case "killmail":
+            alert("Oops, the validator has detected a not correct email address");
+    }
+}

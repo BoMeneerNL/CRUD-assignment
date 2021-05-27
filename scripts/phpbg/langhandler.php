@@ -25,7 +25,7 @@ if(isset($_COOKIE['cookieaccepted']) && $_COOKIE['cookieaccepted'] == "yes"){
             }
         }
         else if(basename($_SERVER['SCRIPT_NAME'],'.php') == "login"){
-            header("location: ");
+            header("location: login");
         }
     }
 }

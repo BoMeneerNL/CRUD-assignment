@@ -1,1 +1,1 @@
-function clikr(e){switch(e){case"accept_cookies":Cookies.set("cookieaccepted","yes",{expires:365}),location.reload()}}
+function clikr(e){switch(e){case"accept_cookies":Cookies.set("cookieaccepted","yes",{expires:365}),location.reload()}}function ldr(e){switch(e){case"killmail":alert("Oops, the validator has detected a not correct email address")}}

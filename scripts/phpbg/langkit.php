@@ -8,6 +8,8 @@ function langkit($text): string
     else{$lang = "en";}
 
     return match ($text) {
+        "goto_next_step" => match ($lang){"nl" =>"",default =>""},
+        "registering_step_header" => match ($lang){"nl" => "Registratie (Stap ".$_GET['step'].")",default =>"Registration (Step ".$_GET['step'].")"},
         "change_lang" => match($lang){"nl" => "Taal veranderen:","de" => "",default => "Change language:"},
         "login_header" => match ($lang) {"nl" => "Login","de" =>"",default => "Sign in"},
         "username" => match($lang){"nl" => "Gebruikersnaam",default => "Username"},
