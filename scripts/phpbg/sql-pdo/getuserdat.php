@@ -7,7 +7,7 @@ include_once 'secureit.php';
             case "regcheck":
                 $dblogin = gdbname("checkusername");
                 $dbdata = explode(";",$dblogin);
-                $username = $_POST['username'];
+                $username = $_POST['reg_username'];
                 $username = base64_encode($username);
                 $conn = new PDO("mysql:host=$dbdata[0];dbname=$dbdata[1]", $dbdata[2], $dbdata[3]);
                 // set the PDO error mode to exception

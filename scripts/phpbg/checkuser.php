@@ -13,7 +13,6 @@ if(isset($_POST['email'],$_POST['password'])){
     $_SESSION['password'] = $_POST['password'];
     $_POST['email'] == null;
     $_POST['password'] == null;
-    echo login(logintype: "intern");
     $sqlpass = null;
     if(!isset($sqlpass)){$sqlpass = 0;}
     if(password_verify($_SESSION['password'],$sqlpass)){
