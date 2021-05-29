@@ -3,21 +3,44 @@ include_once "scripts/phpbg/sql-pdo/getuserdat.php";
 include_once "scripts/phpbg/langhandler.php";
 include_once "scripts/phpstatic/ntse.header.php";
 include_once "scripts/phpbg/langkit.php";
+function prel_reg_1($bcn): string
+{
+if(isset($_COOKIE['errorc'])){
+        if($bcn == 1){
+            if($_COOKIE['errorc'] == "nve" || $_COOKIE['errorc'] == "edae"){
+                return "ijp-3";
+            }
+            else{
+                return "ijp-2";
+            }
+        }
+        if($bcn == 2){
+            if($_COOKIE['errorc'] == "udae"){
+                return "ijp-3";
+            }
+            else{
+                return "ijp-2";
+            }
+        }
+        if($bcn == 3){
+            if($_COOKIE['errorc'] == "pts"){
+                return "ijp-3";
+            }
+            else{
+                return "ijp-2";
+            }
+        }
+    }
+    else{
+        return "ijp-2";
+    }
+}
 if(isset($_GET['step'])){
     switch ($_GET['step']){
         case 1:
-            $bordercolour_1 = "ijp-2";
-            $bordercolour_2 = "ijp-2";
-            $bordercolour_3 = "ijp-2";
-            if(isset($_COOKIE['redo'])) {
-                if ($_COOKIE['redo'] == "y-redec") {
-                    $bordercolour_1 = "ijp-3";
-                    $fuck = "'killmail'";
-                    echo('
-                    <p onload="ldr('.$fuck.')"></p>
-                    ');
-                }
-            }
+            $bordercolour_1 = prel_reg_1(1);
+            $bordercolour_2 = prel_reg_1(2);
+            $bordercolour_3 = prel_reg_1(3);
             echo('
                 <div class="justify-center flex pt-3">
                     <div class="max-w-md w-full space-y-8">
@@ -27,16 +50,6 @@ if(isset($_GET['step'])){
                                 langkit("registering_step_header") . '
                             </h2>
                         </div>
-                        ');
-            if(isset($_COOKIE['redo'])){
-                switch ($_COOKIE['redo']){
-                    case "y-redec":
-                        echo('
-                            <p class="text-sm">'.langkit("y-redec").'</p>
-                        ');
-                }
-            }
-            echo('
                         <form class="mt-6 space-y-4" action="register?step=1validate" method="post">
                             <input type="hidden" name="remember" value="true">
                             <div class="rounded-md shadow-sm py-2">
@@ -55,7 +68,7 @@ if(isset($_GET['step'])){
                                 <div>
                                     <label for="password" class="sr-only">Password</label>
                                     <input id="password" name="password" type="password" autocomplete="current-password" required
-                                        class="focus:ring-'.$bordercolour_3.' focus:border-'.$bordercolour_3.' rounded-none relative block w-full px-3 py-2 border border-'.$bordercolour_2.' placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:z-10 sm:text-sm"
+                                        class="rounded-none relative block w-full px-3 py-2 border border-'.$bordercolour_3.' placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:z-10 sm:text-sm"
                                         placeholder="'.langkit("password").'">
                                 </div>
                             </div>
@@ -70,32 +83,44 @@ if(isset($_GET['step'])){
                 ');
             break;
         case "1validate":
+            setcookie("errorc","", time() - 3600000000);
             $error = false;
             if(isset($_POST["username"]) && isset($_POST['email']) && isset($_POST['password'])){
                 echo('Validating... Please wait');
-                $_SESSION['email'] = $_POST['email'];
-                $_SESSION['username'] = $_POST['username'];
-                $_SESSION['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
-                $_POST['email'] == null;
-                $_POST['username'] == null;
-                $_POST['[password'] == null;
-                if (!filter_var($_SESSION['email'], FILTER_VALIDATE_EMAIL)) {
-                    setcookie('redo','y-redec');
+                $_SESSION['reg_email'] = $_POST['email'];
+                $_SESSION['reg_username'] = $_POST['username'];
+                $_SESSION['reg_password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                if(filter_var($_SESSION['reg_email'], FILTER_VALIDATE_EMAIL)) {
+                    $error = false;
+                }
+                else{
                     $error = true;
+                    setcookie('errorc',"nve");
+                }
+                $echeck = checkemailexistence("regcheck");
+                if($echeck == "DAE"&& $error == false){
+                    setcookie("errorc","edae");
+                    $error = true;
+                }
+                $ucheck = checkusernameexistence("regcheck");
+                if($ucheck == "DAE" && $error == false){
+                    setcookie("errorc","udae");
+                    $error = true;
+                }
 
-                }
-                $ucheck = checkusernameexistence("");
-                if($ucheck == "DAE"){
-
-                }
-                if($error){
-                header("location: register?step=1");
-                }
             }
             else{
                 echo('<p>Oops, something went wrong. Go back to <a href="index">"mainpage"</a> or <a href="register?step=1">"register (step 1)"?</a></p>');
             }
+            if($error == false && isset($_SESSION["reg_email"]) && isset($_SESSION["reg_username"]) && isset($_SESSION["reg_password"])){
+                header("location: register?step=2");
+            }
+            else{
+                header("location: register?step=1");
+            }
             break;
+        default:
+            header("location: register?step=1");
     }
 }
 else{

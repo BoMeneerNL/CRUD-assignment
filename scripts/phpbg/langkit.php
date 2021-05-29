@@ -9,7 +9,9 @@ function langkit($text): string
 
     return match ($text) {
         "goto_next_step" => match ($lang){"nl" =>"Verifieëren en naar de volgende stap gaan",default =>"Verify data, and go to the next step"},
-        "y-redec" => match ($lang){"nl" => "Er is iets fout gegaan :(<br/>je email ziet er 'bijzonder' uit, kijk of je email correct is", default => "Something went wrong:<br/> Oops, Your email address seems off, please check if your email is correct"},
+        "reg_stage1_errorheader" =>match($lang){"nl" => "Er is iets fout gegaan :(<br/>",default => "Something(s) went wrong :(<br/>"},
+        "redec" => match ($lang){"nl" => "je email adres ziet er 'bijzonder' uit, kijk of je email correct is", default => "Oops, Your email address seems off, please check if your email is correct"},
+        "udae" => match ($lang){"nl" =>"Je gekozen gebruikersnaam word al gebruikt",default =>"This username is already taken"},
         "registering_step_header" => match ($lang){"nl" => "Registratie (Stap ".$_GET['step'].")",default =>"Registration (Step ".$_GET['step'].")"},
         "change_lang" => match($lang){"nl" => "Taal veranderen:","de" => "",default => "Change language:"},
         "login_header" => match ($lang) {"nl" => "Login","de" =>"",default => "Sign in"},

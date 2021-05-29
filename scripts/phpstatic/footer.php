@@ -1,4 +1,5 @@
 <?php
+include_once "scripts/phpbg/langkit.php";
 if(isset($_GET['serve'])){
     $lnkrnl = "index?serve=".$_GET['serve']."&lang=nl";
     $lnkren = "index?serve=".$_GET['serve']."&lang=en";
@@ -8,9 +9,9 @@ else{
     $lnkren = basename($_SERVER['SCRIPT_NAME'], '.php')."?lang=en";
 }
 echo('
-        <footer class=" fixed rounded bg-gray-500 w-screen h-32 md:h-48 bottom-0 mt-6 pt-2">
+        <footer class="fixed rounded bg-gray-500 w-screen h-32 md:h-48 bottom-0 mt-6 pt-2">
             <div class="flaglangcontainer">
-                <div>
+                <div class="px-2">
                     '.langkit("change_lang").'
                 </div>
                 <div id="nl" class="mx-3 mt-1 float-left">
