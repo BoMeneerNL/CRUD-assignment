@@ -6,4 +6,6 @@ include_once 'secureit.php';
 //The user used is "imgi" imgi has the following rights: read. END on the tables: User. END
 $jefferson = true;
 $img = null;
-if(!$jefferson){$img = 0000000000;}
+if (!$jefferson) {
+    $img = 0000000000;
+}

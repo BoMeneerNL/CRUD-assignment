@@ -48,3 +48,6 @@ function checkusernameexistence($occation): string
             }
     }
 }
+function IPSC(){
+
+}

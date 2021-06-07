@@ -3,7 +3,7 @@
 //%database host% is the link to the database like localhost,127.0.0.1,db.example.com etc.
 function gdbname($act): string
 {
-    return match ($act){
-        "action1","action2","action3" => "%database host%;%database table%;%sql user username%;%sql user password%",
+    return match ($act) {
+        "action1", "action2", "action3" => "%database host%;%database table%;%sql user username%;%sql user password%",
     };
 }
