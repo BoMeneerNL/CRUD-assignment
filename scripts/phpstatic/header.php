@@ -1,19 +1,19 @@
 <?php
+session_start();
 $titleconcat = "CRUD opdracht - " . $_GET["serve"];
 if (isset($_COOKIE['choosenlanguage'])) {
     $lang = $_COOKIE['choosenlanguage'];
 } else {
     $lang = "en";
 }
-if ($_GET['serve'] == "login"){
-    $htmltag = '<html class = "bg-gray-50" lang="'.$lang.'">';
-}
-else{
-    $htmltag = '<html lang="'.$lang.'">';
+if ($_GET['serve'] == "login") {
+    $htmltag = '<html class = "bg-gray-50" lang="' . $lang . '">';
+} else {
+    $htmltag = '<html lang="' . $lang . '">';
 }
 echo('
 <!DOCTYPE html>
-'.$htmltag.'
+' . $htmltag . '
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">

@@ -4,10 +4,10 @@ include_once 'secureit.php';
 //The user used is "usrh" usrh has the following rights: ALL. END on the tables: ALL. END
 function checkemailexistence($occation): string
 {
-    switch ($occation){
+    switch ($occation) {
         case "regcheck":
             $dblogin = gdbname("checkusername");
-            $dbdata = explode(";",$dblogin);
+            $dbdata = explode(";", $dblogin);
             $email = $_SESSION['reg_email'];
             //B64DB Sanitizer
             $email = base64_encode($email);
@@ -18,34 +18,33 @@ function checkemailexistence($occation): string
             $query->bindParam(':email', $email);
             $query->execute();
             $conn = null;
-            if($query->rowCount() > 0){
+            if ($query->rowCount() > 0) {
                 return "DAE";
-            }
-            else{
+            } else {
                 return "empty";
             }
     }
 }
-    function checkusernameexistence($occation): string
-    {
-        switch ($occation){
-            case "regcheck":
-                $dblogin = gdbname("checkusername");
-                $dbdata = explode(";",$dblogin);
-                $username = $_SESSION['reg_username'];
-                $username = base64_encode($username);
-                $conn = new PDO("mysql:host=$dbdata[0];dbname=$dbdata[1]", $dbdata[2], $dbdata[3]);
-                // set the PDO error mode to exception
-                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $query = $conn->prepare('SELECT * FROM users WHERE Username = :username');
-                $query->bindParam(':username', $username);
-                $query->execute();
-                $conn = null;
-                if($query->rowCount() > 0){
-                    return "DAE";
-                }
-                else{
-                    return "empty";
-                }
-        }
+
+function checkusernameexistence($occation): string
+{
+    switch ($occation) {
+        case "regcheck":
+            $dblogin = gdbname("checkusername");
+            $dbdata = explode(";", $dblogin);
+            $username = $_SESSION['reg_username'];
+            $username = base64_encode($username);
+            $conn = new PDO("mysql:host=$dbdata[0];dbname=$dbdata[1]", $dbdata[2], $dbdata[3]);
+            // set the PDO error mode to exception
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $query = $conn->prepare('SELECT * FROM users WHERE Username = :username');
+            $query->bindParam(':username', $username);
+            $query->execute();
+            $conn = null;
+            if ($query->rowCount() > 0) {
+                return "DAE";
+            } else {
+                return "empty";
+            }
+    }
 }

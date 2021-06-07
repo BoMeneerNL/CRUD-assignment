@@ -1,12 +1,11 @@
 <?php
 include_once 'scripts/phpbg/langkit.php';
-if(isset($_GET['serve'])){
-    $linktag1 = "<a href='index?serve=' ". $_GET['serve'] ."&lang=nl' class='p-0 m-0'>";
-    $linktag2 = "<a href='index?serve=' ". $_GET['serve'] ."&lang=en' class='p-0 m-0'>";
-}
-else{
-    $linktag1 = "<a href='".basename($_SERVER['SCRIPT_NAME'], '.php')."?lang=nl' class='p-0 m-0'>";
-    $linktag2 = "<a href='".basename($_SERVER['SCRIPT_NAME'], '.php')."?lang=en' class='p-0 m-0'>";
+if (isset($_GET['serve'])) {
+    $linktag1 = "<a href='index?serve=' " . $_GET['serve'] . "&lang=nl' class='p-0 m-0'>";
+    $linktag2 = "<a href='index?serve=' " . $_GET['serve'] . "&lang=en' class='p-0 m-0'>";
+} else {
+    $linktag1 = "<a href='" . basename($_SERVER['SCRIPT_NAME'], '.php') . "?lang=nl' class='p-0 m-0'>";
+    $linktag2 = "<a href='" . basename($_SERVER['SCRIPT_NAME'], '.php') . "?lang=en' class='p-0 m-0'>";
 }
 echo('
 <div class="fixed z-10 inset-0 overflow-y-auto" role="dialog" aria-modal="true">
@@ -19,25 +18,25 @@ echo('
                 <div class="sm:flex sm:items-start">
                     <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                             <p class="text-sm text-gray-500">
-                                '.langkit("cookies_bericht").'
+                                ' . langkit("cookies_bericht") . '
                             </p>
                     </div>
                 </div>
             </div>
             <div class="bg-gray-50 px-2 py-3 sm:flex sm:flex-row-reverse">
-                '.$linktag1.'
+                ' . $linktag1 . '
                     <button type="button" class="py-2 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm p-3 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 sm:mt-0 sm:ml-2 sm:w-auto sm:text-sm">
-                        <img src="assets/img/flags/nl.svg" alt="educator_logo_changelogintype" width="20" height="15">
+                        <img src="../../assets/img/nl.svg" alt="educator_logo_changelogintype" width="20" height="15">
                     </button>
                 </a>
-                '.$linktag2.'
+                ' . $linktag2 . '
                 <button  type="button" class="py-2 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm p-3 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 sm:mt-0 sm:ml-2 sm:w-auto sm:text-sm">
                     <img src="assets/img/flags/en.svg" alt="educator_logo_changelogintype" width="23" height="15">
                 </button>
                 </a>
                 <button type="button"
-                    class=" mt-2 w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-3 py-1 bg-red-600 text-base font-medium text-white bg-ijp-lichtblauw hover:bg-ijp-donkerblauw focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm" onclick="clikr('."'accept_cookies'".')">
-                    '.langkit("cookies_knop").'
+                    class=" mt-2 w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-3 py-1 bg-red-600 text-base font-medium text-white bg-ijp-lichtblauw hover:bg-ijp-donkerblauw focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm" onclick="clikr(' . "'accept_cookies'" . ')">
+                    ' . langkit("cookies_knop") . '
                 </button>
             </div>
         </div>
