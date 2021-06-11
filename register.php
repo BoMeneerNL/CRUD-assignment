@@ -51,22 +51,22 @@ if (isset($_GET['step'])) {
                         <form class="mt-6 space-y-4" action="register?step=1validate" method="post">
                             <input type="hidden" name="remember" value="true">
                             <div class="rounded-md shadow-sm py-2">
-                                <div>
-                                    <label for="email" class="sr-only">Email</label>
+                                <div class="py-0.5">
+                                    <label for="email" class="sr-only">'.langkit("email_address").'</label>
                                     <input id="email" name="email" type="email" required
-                                        class="rounded-none relative block w-full px-3 py-2 border border-' . $bordercolour_1 . ' placeholder-gray-500 text-gray-900 focus:outline-none focus:z-10 text-sm rounded-md"
+                                        class="rounded relative block w-full px-3 py-2 border border-' . $bordercolour_1 . ' placeholder-gray-500 text-gray-900 focus:outline-none focus:z-10 text-sm rounded-md"
                                         placeholder="' . langkit("email_address") . '">
                                 </div>
-                                <div class="py-1">
+                                <div class="py-0.5">
                                     <label for="username" class="sr-only">Username</label>
                                     <input id="username" name="username" type="text" required
-                                        class="rounded-none relative block w-full px-3 py-2 border border-' . $bordercolour_2 . ' placeholder-gray-500 text-gray-900 focus:outline-none text-sm rounded-md"
+                                        class="rounded relative block w-full px-3 py-2 border border-' . $bordercolour_2 . ' placeholder-gray-500 text-gray-900 focus:outline-none text-sm rounded-md"
                                         placeholder="' . langkit("username") . '">
                                 </div>
-                                <div>
+                                <div class="py-0.5">
                                     <label for="password" class="sr-only">Password</label>
                                     <input id="password" name="password" type="password" autocomplete="current-password" required
-                                        class="rounded-none relative block w-full px-3 py-2 border border-' . $bordercolour_3 . ' placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:z-10 text-sm"
+                                        class="rounded relative block w-full px-3 py-2 border border-' . $bordercolour_3 . ' placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:z-10 text-sm"
                                         placeholder="' . langkit("password") . '">
                                 </div>
                             </div>
@@ -97,12 +97,12 @@ if (isset($_GET['step'])) {
                     setcookie('errorc', "nve");
                     $error = true;
                 }
-                $echeck = checkemailexistence("regcheck");
+                $echeck = checkexistence("email");
                 if ($echeck == "DAE" && $error == false) {
                     setcookie("errorc", "edae");
                     $error = true;
                 }
-                $ucheck = checkusernameexistence("regcheck");
+                $ucheck = checkexistence("username");
                 if ($ucheck == "DAE" && $error == false) {
                     setcookie("errorc", "udae");
                     $error = true;
@@ -147,8 +147,9 @@ if (isset($_GET['step'])) {
         case "2validate":
 
             break;
+        case "finalize":
         default:
-
+            echo('<p>Oops, something gone wrong :(<br/>Error: stp_loc=nullif</p>');
     }
 } else {
     header("location: register?step=1");

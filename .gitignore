@@ -1,4 +1,6 @@
 node_modules
 .idea
-assets
+assets/*.*
+assets/img/*.*
+assets/userdat/*.*
 secureit.php
