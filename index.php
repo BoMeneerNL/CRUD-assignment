@@ -1,5 +1,5 @@
 <?php
-//This index file is only a linking file, no HTML included
+//This index file is only a linking file, no showed HTML included
 include_once "scripts/phpbg/langhandler.php";
 if (isset($_GET['serve'])) {
     include_once "scripts/phpstatic/header.php";

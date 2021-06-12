@@ -23,4 +23,14 @@ echo('
         <title>' . $titleconcat . '</title>
     </head>
     <body class="h-screen">
+        <div id="langgoto" class="float-right">
+            <div id="langnl">
+            <img src="assets/img/flags/nl.svg">
+            
+            </div>
+            <div id="langen">
+            
+            
+            </div>
+        </div>
 ');
