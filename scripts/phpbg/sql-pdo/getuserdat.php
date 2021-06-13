@@ -5,21 +5,31 @@ include_once 'secureit.php';
 
 function checkexistence($inputtype): string
 {
-            $dblogin = gdbname();
-            $dbdata = explode(";", $dblogin);
-            if($inputtype == "username"){ $input = base64_encode($_SESSION['reg_username']); }
-            else if($inputtype == "email"){ $input = base64_encode($_SESSION['reg_email']); }
-            $conn = new PDO("mysql:host=$dbdata[0];dbname=$dbdata[1]", $dbdata[2], $dbdata[3]);
-            // set the PDO error mode to exception
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            if($inputtype == "username"){ $query = $conn->prepare('SELECT * FROM users WHERE Username = :input'); }
-            else if($inputtype == "email"){ $query = $conn->prepare('SELECT * FROM users WHERE Email = :input'); }
-            $query->bindParam(':input', $input);
-            $query->execute();
-            $conn = null;
-            if ($query->rowCount() > 0) { return "DAE"; }
-            else { return "empty"; }
+    $dblogin = gdbname();
+    $dbdata = explode(";", $dblogin);
+    if ($inputtype == "username") {
+        $input = base64_encode($_SESSION['reg_username']);
+    } else if ($inputtype == "email") {
+        $input = base64_encode($_SESSION['reg_email']);
+    }
+    $conn = new PDO("mysql:host=$dbdata[0];dbname=$dbdata[1]", $dbdata[2], $dbdata[3]);
+    // set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    if ($inputtype == "username") {
+        $query = $conn->prepare('SELECT * FROM users WHERE Username = :input');
+    } else if ($inputtype == "email") {
+        $query = $conn->prepare('SELECT * FROM users WHERE Email = :input');
+    }
+    $query->bindParam(':input', $input);
+    $query->execute();
+    $conn = null;
+    if ($query->rowCount() > 0) {
+        return "DAE";
+    } else {
+        return "empty";
+    }
 }
+
 function IPSC(): int
 {
     $dblogin = gdbname();
@@ -37,21 +47,18 @@ function IPSC(): int
 
     $conn = null;
     if ($query->rowCount() > 0) {
-        if(isset($result['password'])){
+        if (isset($result['password'])) {
             $pcheck = base64_decode($result['password']);
-            if(password_verify($_SESSION['password'],$pcheck)){
+            if (password_verify($_SESSION['password'], $pcheck)) {
                 return 1;
-            }
-            else{
+            } else {
                 return 0;
             }
-        }
-        else{
+        } else {
             return 0;
         }
 
-    }
-    else {
+    } else {
         return 0;
     }
 }
@@ -67,10 +74,10 @@ function logincheck()
             $conn = new PDO("mysql:host=$dbdata[0];dbname=$dbdata[1]", $dbdata[2], $dbdata[3]);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $stmt = $conn->prepare("SELECT password FROM users WHERE Email = :email");
-            $stmt->bindParam(':email',$email);
+            $stmt->bindParam(':email', $email);
             $stmt->execute();
             $result = $stmt->Fetch(PDO::FETCH_ASSOC);
-            if(isset($result['password'])){
+            if (isset($result['password'])) {
                 $pcheck = base64_decode($result['password']);
                 $conn = null;
             }
@@ -78,9 +85,9 @@ function logincheck()
             echo "Error: " . $e->getMessage();
             $conn = null;
         }
-        if(isset($pcheck)){
-            if(password_verify($_SESSION['password'],$pcheck)){
-            $gothru = true;
+        if (isset($pcheck)) {
+            if (password_verify($_SESSION['password'], $pcheck)) {
+                $gothru = true;
             }
         }
     }
@@ -89,8 +96,7 @@ function logincheck()
         $_SESSION['email'] = null;
         $_SESSION['password'] = null;
         header("location: login");
-    }
-    else{
+    } else {
         $_SESSION['loggedin'] = true;
         header("location: account");
     }

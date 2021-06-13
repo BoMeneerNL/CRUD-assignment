@@ -23,8 +23,11 @@ if (isset($_COOKIE['cookieaccepted']) && $_COOKIE['cookieaccepted'] == "yes") {
                 header("location: register?step=1");
             }
         } else if (basename($_SERVER['SCRIPT_NAME'], '.php') == "login") {
-            if(isset($_GET['loc'])){ header("location: login?loc=".$_GET['loc']); }
-            else{ header("location: login"); }
+            if (isset($_GET['loc'])) {
+                header("location: login?loc=" . $_GET['loc']);
+            } else {
+                header("location: login");
+            }
         }
     }
 } else {

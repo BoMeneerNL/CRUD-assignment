@@ -19,15 +19,14 @@ if ($_GET['loc'] == "check") {
         echo("<p>" . langkit("Err_loading_usergdat") . "</p>");
     }
 
-}
-else if($_GET['loc'] == "forgotpassword"){
+} else if ($_GET['loc'] == "forgotpassword") {
     echo("Oops, could not load ILoc/ForgotPassword/internals.site");
     echo('
         <div class="justify-center flex pt-3">
     <div class="max-w-md w-full space-y-8">
         <div>
             <img class="mx-auto" width="100" height="93" src="assets/img/IJPv3p3.svg" alt="Workflow">
-            <h2 class="text-center text-xl font-extrabold text-gray-900"> ' .langkit("reqnp") . '</h2>
+            <h2 class="text-center text-xl font-extrabold text-gray-900"> ' . langkit("reqnp") . '</h2>
         </div>
         <form class="mt-6 space-y-4" action="login?loc=check" method="post">
             <input type="hidden" name="remember" value="true">
@@ -36,7 +35,7 @@ else if($_GET['loc'] == "forgotpassword"){
                     <label for="email" class="sr-only">Email</label>
                     <input id="email" name="email" type="email" required
                         class="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded focus:outline-none focus:border-ijp-2 focus:z-10 text-sm"
-                        placeholder="'.langkit("email_address").'">
+                        placeholder="' . langkit("email_address") . '">
                 </div>
             </div>
             <div>
@@ -48,14 +47,13 @@ else if($_GET['loc'] == "forgotpassword"){
     </div>
 </div>
 ');
-}
-else {
+} else {
     echo('
 <div class="justify-center flex pt-3">
     <div class="max-w-md w-full space-y-8">
         <div>
             <img class="mx-auto" width="100" height="93" src="assets/img/IJPv3p3.svg" alt="Workflow">
-            <h2 class="text-center text-xl font-extrabold text-gray-900"> ' .langkit("login_header") . ' </h2>
+            <h2 class="text-center text-xl font-extrabold text-gray-900"> ' . langkit("login_header") . ' </h2>
         </div>
         <form class="mt-6 space-y-4" action="login?loc=check" method="post">
             <input type="hidden" name="remember" value="true">

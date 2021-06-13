@@ -52,7 +52,7 @@ if (isset($_GET['step'])) {
                             <input type="hidden" name="remember" value="true">
                             <div class="rounded-md shadow-sm py-2">
                                 <div class="py-0.5">
-                                    <label for="email" class="sr-only">'.langkit("email_address").'</label>
+                                    <label for="email" class="sr-only">' . langkit("email_address") . '</label>
                                     <input id="email" name="email" type="email" required
                                         class="rounded relative block w-full px-3 py-2 border border-' . $bordercolour_1 . ' placeholder-gray-500 text-gray-900 focus:outline-none focus:z-10 text-sm rounded-md"
                                         placeholder="' . langkit("email_address") . '">
