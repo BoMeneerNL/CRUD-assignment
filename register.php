@@ -128,14 +128,20 @@ if (isset($_GET['step'])) {
                             <h2 class="text-center text-xl font-extrabold text-gray-900"> '
                 . langkit("registering_step_header") . '
                             </h2>
+                            <h2 class="text-center text-l font-extrabold text-gray-900"> 
+                            Current living address
+                            </h2>
+                            
+                            
                         </div>
                         <form class="mt-6 space-y-4" action="register?step=2validate" method="post">
                             <select id="country" name="country" class="rounded-none relative block w-full px-3 py-2 border placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:z-10 sm:text-sm">
                                ' . countryout($country_nl, $country_en, $country_flags) . '
                             </select>
-                            <select id="area" name="area" class="rounded-none relative block w-full px-3 py-2 border placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:z-10 sm:text-sm">
+                            <select id="region" name="region" class="rounded-none relative block w-full px-3 py-2 border placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:z-10 sm:text-sm">
                             ' . areaout($country_nl, $country_en, $areas) . '
                             </select>
+                            
                             <button type="submit" id="loginbutton"
                             class="relative w-full justify-center py-2 text-sm font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-900">' . langkit("goto_next_step") . '
                             </button>
@@ -145,9 +151,24 @@ if (isset($_GET['step'])) {
             ');
             break;
         case "2validate":
-
+            $_SESSION['reg_country'] = $_POST['country'];
+            $_SESSION['reg_region'] = $_POST['region'];
+            $_SESSION['reg_city'] = $_POST['city'];
+            $_SESSION['reg_postalcode'] = $_POST['postalcode'];
+            $_SESSION['reg_streetaddress'] = $_POST['streetaddress'];
+            $gothru = step2check($country_nl,$areas);
+            if($gothru){
+                header("location: register?step=3");
+            }
+            else{
+                header("location: register?step=2");
+            }
             break;
         case "finalize":
+            $_SESSION['reg_firstname'] = "bo";
+            $_SESSION['reg_lastname'] = "Hulshof";
+            include_once "scripts/phpbg/sql-pdo/registerinject.php";
+            break;
         default:
             echo('<p>Oops, something gone wrong :(<br/>Error: stp_loc=nullif</p>');
     }

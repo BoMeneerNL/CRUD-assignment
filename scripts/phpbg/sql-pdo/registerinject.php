@@ -20,21 +20,21 @@ if (isset($_SESSION['reg_password']) && $gothru) {
     $password = null;
     $gothru = false;
 }
-if (isset($_SESSION['reg_firstname'])) {
-    $firstname = $_SESSION['reg_firstname'];
+if (isset($_SESSION['reg_firstname']) && $gothru) {
+    $firstname = base64_encode($_SESSION['reg_firstname']);
 } else {
     $firstname = null;
     $gothru = false;
 }
 
 if (isset($_SESSION['reg_middlename'])) {
-    $middlename = $_SESSION['reg_middlename'];
+    $middlename = base64_encode($_SESSION['reg_middlename']);
 } else {
     $middlename = null;
 }
 
 if (isset($_SESSION['reg_lastname'])) {
-    $lastname = $_SESSION['reg_lastname'];
+    $lastname = base64_encode($_SESSION['reg_lastname']);
 } else {
     $lastname = null;
     $gothru = false;
@@ -92,7 +92,7 @@ if ($gothru) {
     $dbdata = explode(";", $dblogin);
     $conn = new PDO("mysql:host=$dbdata[0];dbname=$dbdata[1]", $dbdata[2], $dbdata[3]);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt = $conn->prepare("INSERT INTO `users` (`UNID`, `ranked`, `Username`, `Email`, `Password`, `First_Name`, `Middle_Names`, `Surname`, `Date_of_Birth`, `Phone_Number`, `Country`, `region`, `Postal_Code`, `Street_Name_and_Number`, `Website`, `JID`) VALUES (NULL, '0', :username, :email, :password, :firstname, :middlename, :lastname, :dateofbirth, :phonenumber, :contry, :region, NULL, NULL, NULL, '')");
+    $stmt = $conn->prepare("INSERT INTO `users` (`UNID`, `ranked`, `Username`, `Email`, `Password`, `First_Name`, `Middle_Names`, `Surname`, `Date_of_Birth`, `Phone_Number`, `Country`, `region`, `Postal_Code`, `Street_Name_and_Number`, `Website`, `JID`) VALUES (NULL, '0', :username, :email, :password, :firstname, :middlename, :lastname, :dateofbirth, :phonenumber, :contry, :region, :postalcode, :streetaddress, :website, '')");
     $stmt->bindParam(':username', $username);
     $stmt->bindParam(':email', $email);
     $stmt->bindParam(':password', $password);
@@ -106,17 +106,22 @@ if ($gothru) {
     $stmt->bindParam(':postalcode', $postalcode);
     $stmt->bindParam(':streetaddress', $streetaddress);
     $stmt->bindParam(':website', $website);
+    $stmt->execute();
+    $conn = null;
+    session_unset();
+    header("Location: login");
 } else {
+    echo('<p>Oops, something(s) went wrong:</p><br/>');
     if (!isset($email) || $email == null) {
-        echo(' <p>Oops, something went wrong:<br/>Could not get a valid email variable (Error_Email_Null_Selector)</p> ');
+        echo(' <p>Could not get a valid email variable (Error_Email_Null_Selector)</p><br/>');
     }
     if (!isset($password) || $password == null) {
-        echo(' <p>Oops, something went wrong:<br/>Could not get a valid password variable (Error_Password_Null_Selector)</p> ');
+        echo(' <p>Could not get a valid password variable (Error_Password_Null_Selector)</p><br/>');
     }
     if (!isset($firstname) || $firstname == null) {
-        echo(' <p>Oops, something went wrong:<br/>Could not get a valid Firstname variable (Error_Firstname_Null_Selector)</p> ');
+        echo(' <p>Could not get a valid Firstname variable (Error_Firstname_Null_Selector)</p><br/>');
     }
     if (!isset($lastname) || $lastname == null) {
-        echo(' <p>Oops, something went wrong:<br/>Could not get a valid Surname variable (Error_Surname_Null_Selector)</p> ');
+        echo(' <p>Could not get a valid Surname variable (Error_Surname_Null_Selector)</p><br/>');
     }
 }
