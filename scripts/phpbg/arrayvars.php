@@ -250,8 +250,9 @@ function step2check($contrynl, $areas)
 
     $ccount = 0;
     $ccountd = count($contrynl);
-    $gotten1 = false;
-    while ($ccount < $ccountd) {
+    echo($ccountd);
+    /*
+    while ($ccount < $ccountd || $gotten1) {
         if ($contrynl[$ccount] == $_POST['country']) {
             $gotten1 = true;
             $ccountd = -1;
@@ -262,13 +263,13 @@ function step2check($contrynl, $areas)
     $jefferson1 = count($areas[$ccount]);
     $jefferson2 = 0;
     $gotten2 = false;
-    while ($jefferson2 < $jefferson1) {
-        if ($_POST['area'] == $areas[$ccount][$jefferson2]) {
+    while ($jefferson2 < $jefferson1 || $gotten2) {
+        if ( $areas[$ccount][$jefferson2] == $_POST['region']) {
             $gotten2 = true;
         } else {
             $jefferson2++;
         }
-    }
+    }*/
     if ($gotten1 && $gotten2) {
         return true;
     } else {

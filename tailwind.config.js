@@ -1,5 +1,5 @@
 module.exports = {
-    //mode: 'jit',
+    mode: 'jit',
     purge: {
         content: ['./scripts/phpstatic/*.php', './scripts/phpstatic/errors/*.php', './*.php', './scripts/phpbg/*.php']
     },

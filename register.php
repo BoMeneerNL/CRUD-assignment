@@ -157,11 +157,13 @@ if (isset($_GET['step'])) {
             $_SESSION['reg_postalcode'] = $_POST['postalcode'];
             $_SESSION['reg_streetaddress'] = $_POST['streetaddress'];
             $gothru = step2check($country_nl,$areas);
+            echo $gothru;
             if($gothru){
-                header("location: register?step=3");
+
+               // header("location: register?step=3");
             }
             else{
-                header("location: register?step=2");
+                //header("location: register?step=2");
             }
             break;
         case "finalize":
