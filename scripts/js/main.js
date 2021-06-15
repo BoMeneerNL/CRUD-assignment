@@ -1,3 +1,6 @@
+function redr(){
+    window.location.href = 'account?exit=yes';
+}
 function clikr(func) {
     switch (func) {
         case "accept_cookies":
@@ -13,7 +16,7 @@ try {
     function show() {
         var as = document.forms[0].country.value;
         console.log(as);
-        Cookies.remove('selecco')
+        Cookies.remove('selecco',{ path: '' })
         Cookies.set('selecco', as, {expires: 7, path: '/crud-opdracht'})
         location.reload();
     }

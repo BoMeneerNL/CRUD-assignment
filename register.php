@@ -159,11 +159,10 @@ if (isset($_GET['step'])) {
             $gothru = step2check($country_nl,$areas);
             echo $gothru;
             if($gothru){
-
-               // header("location: register?step=3");
+                header("location: register?step=3");
             }
             else{
-                //header("location: register?step=2");
+                header("location: register?step=2");
             }
             break;
         case "finalize":

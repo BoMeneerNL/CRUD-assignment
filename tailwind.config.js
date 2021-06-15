@@ -18,8 +18,8 @@ module.exports = {
             screens: {
                 'nHD': "640px",
                 'qHD': "960px",
-                'HD': "1280",
-                'WXGA': "1366",
+                'HD': "1280px",
+                'WXGA': "1366px",
                 'HD+': "1600px",
                 'FHD': "1920px",
                 'QHD': "2560px",

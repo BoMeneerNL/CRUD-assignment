@@ -247,29 +247,29 @@ function areaout($countrynl, $countryen, $areas)
 //Function does not import country_en because this import is only for count() which has (afaik) no difference between those 2 arrays
 function step2check($contrynl, $areas)
 {
-
+    $gotten1 = null;
+    $gotten2 = null;
     $ccount = 0;
     $ccountd = count($contrynl);
-    echo($ccountd);
-    /*
-    while ($ccount < $ccountd || $gotten1) {
-        if ($contrynl[$ccount] == $_POST['country']) {
+    while ($ccount < $ccountd || $gotten1 == true) {
+        if ($contrynl[$ccount] == $_SESSION['reg_country']) {
             $gotten1 = true;
             $ccountd = -1;
+            break;
         } else {
             $ccount++;
         }
     }
     $jefferson1 = count($areas[$ccount]);
     $jefferson2 = 0;
-    $gotten2 = false;
     while ($jefferson2 < $jefferson1 || $gotten2) {
-        if ( $areas[$ccount][$jefferson2] == $_POST['region']) {
+        if ($areas[$ccount][$jefferson2] == $_SESSION['reg_region']) {
             $gotten2 = true;
+            $jefferson1 = -1;
         } else {
             $jefferson2++;
         }
-    }*/
+    }
     if ($gotten1 && $gotten2) {
         return true;
     } else {

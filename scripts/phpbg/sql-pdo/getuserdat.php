@@ -79,12 +79,14 @@ function logincheck()
             $result = $stmt->Fetch(PDO::FETCH_ASSOC);
             if (isset($result['password'])) {
                 $pcheck = base64_decode($result['password']);
-                $conn = null;
+
             }
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
+        } finally {
             $conn = null;
         }
+
         if (isset($pcheck)) {
             if (password_verify($_SESSION['password'], $pcheck)) {
                 $gothru = true;
@@ -100,4 +102,18 @@ function logincheck()
         $_SESSION['loggedin'] = true;
         header("location: account");
     }
+}
+function MyAcIn(){
+    $dblogin = gdbname();
+    $dbdata = explode(";", $dblogin);
+    $email = base64_encode($_SESSION['email']);
+    $conn = new PDO("mysql:host=$dbdata[0];dbname=$dbdata[1]", $dbdata[2], $dbdata[3]);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $stmt = $conn->prepare("SELECT * FROM users WHERE Email = :email");
+    $stmt->bindParam(':email', $email);
+    $stmt->execute();
+    $result = $stmt->Fetch(PDO::FETCH_ASSOC);
+
+    var_dump($result);
+    return $result;
 }
