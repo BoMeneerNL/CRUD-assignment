@@ -28,6 +28,8 @@ if (isset($_COOKIE['cookieaccepted']) && $_COOKIE['cookieaccepted'] == "yes") {
             } else {
                 header("location: login");
             }
+        }else if(basename($_SERVER['SCRIPT_NAME'],".php") == "account"){
+            header("location: account");
         }
     }
 } else {
