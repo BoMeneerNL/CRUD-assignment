@@ -16,9 +16,9 @@ function checkexistence($inputtype): string
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     if ($inputtype == "username") {
-        $query = $conn->prepare('SELECT * FROM users WHERE Username = :input');
+        $query = $conn->prepare('SELECT * FROM userdat WHERE Username = :input');
     } else if ($inputtype == "email") {
-        $query = $conn->prepare('SELECT * FROM users WHERE Email = :input');
+        $query = $conn->prepare('SELECT * FROM userdat WHERE Email = :input');
     }
     $query->bindParam(':input', $input);
     $query->execute();
@@ -39,7 +39,7 @@ function IPSC(): int
     $conn = new PDO("mysql:host=$dbdata[0];dbname=$dbdata[1]", $dbdata[2], $dbdata[3]);
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $query = $conn->prepare('SELECT * FROM users WHERE Email = :email');
+    $query = $conn->prepare('SELECT * FROM userdat WHERE Email = :email');
     $query->bindParam(':email', $email);
     $query->execute();
 
@@ -73,7 +73,7 @@ function logincheck()
             $email = base64_encode($_SESSION['email']);
             $conn = new PDO("mysql:host=$dbdata[0];dbname=$dbdata[1]", $dbdata[2], $dbdata[3]);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $stmt = $conn->prepare("SELECT password FROM users WHERE Email = :email");
+            $stmt = $conn->prepare("SELECT password FROM userdat WHERE Email = :email");
             $stmt->bindParam(':email', $email);
             $stmt->execute();
             $result = $stmt->Fetch(PDO::FETCH_ASSOC);
@@ -103,13 +103,15 @@ function logincheck()
         header("location: account");
     }
 }
-function MyAcIn(){
+
+function MyAcIn()
+{
     $dblogin = gdbname();
     $dbdata = explode(";", $dblogin);
     $email = base64_encode($_SESSION['email']);
     $conn = new PDO("mysql:host=$dbdata[0];dbname=$dbdata[1]", $dbdata[2], $dbdata[3]);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt = $conn->prepare("SELECT * FROM users WHERE Email = :email");
+    $stmt = $conn->prepare("SELECT * FROM userdat WHERE Email = :email");
     $stmt->bindParam(':email', $email);
     $stmt->execute();
     $result = $stmt->Fetch(PDO::FETCH_ASSOC);

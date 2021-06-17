@@ -39,6 +39,15 @@ if (isset($_GET['step'])) {
             $bordercolour_1 = prel_reg_1(1);
             $bordercolour_2 = prel_reg_1(2);
             $bordercolour_3 = prel_reg_1(3);
+            if (isset($_COOKIE['errorc'])) {
+                switch ($_COOKIE['errorc']) {
+                    case "nve":
+                        echo('
+                        <p>Oops, your email is not valid, try again</p>
+                        ');
+                        break;
+                }
+            }
             echo('
                 <div class="justify-center flex pt-3 md:pt-5">
                     <div class="max-w-md xl:max-w-xl w-full space-y-8">
@@ -120,6 +129,7 @@ if (isset($_GET['step'])) {
             }
             break;
         case 2:
+            include_once "scripts/phpstatic/oopsinprogress.php";
             echo('
                 <div class="justify-center flex pt-3 md:pt-5">
                     <div class="sm:max-w-sm md:max-w-md xl:max-w-xl w-full space-y-8">
@@ -151,7 +161,8 @@ if (isset($_GET['step'])) {
             ');
             break;
         case "2validate":
-            $_SESSION['reg_country'] = $_POST['country'];
+            header("register?step=2");
+            /*$_SESSION['reg_country'] = $_POST['country'];
             $_SESSION['reg_region'] = $_POST['region'];
             $_SESSION['reg_city'] = $_POST['city'];
             $_SESSION['reg_postalcode'] = $_POST['postalcode'];
@@ -163,7 +174,7 @@ if (isset($_GET['step'])) {
             }
             else{
                 header("location: register?step=2");
-            }
+            }*/
             break;
         case "finalize":
             $_SESSION['reg_firstname'] = "bo";

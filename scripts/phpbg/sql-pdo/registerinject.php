@@ -92,7 +92,7 @@ if ($gothru) {
     $dbdata = explode(";", $dblogin);
     $conn = new PDO("mysql:host=$dbdata[0];dbname=$dbdata[1]", $dbdata[2], $dbdata[3]);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt = $conn->prepare("INSERT INTO `users` (`UNID`, `ranked`, `Username`, `Email`, `Password`, `First_Name`, `Middle_Names`, `Surname`, `Date_of_Birth`, `Phone_Number`, `Country`, `region`, `Postal_Code`, `Street_Name_and_Number`, `Website`, `JID`) VALUES (NULL, '0', :username, :email, :password, :firstname, :middlename, :lastname, :dateofbirth, :phonenumber, :contry, :region, :postalcode, :streetaddress, :website, '')");
+    $stmt = $conn->prepare("INSERT INTO `userdat` (`UNID`, `ranked`, `Username`, `Email`, `Password`, `First_Name`, `Middle_Names`, `Surname`, `Date_of_Birth`, `Phone_Number`, `Country`, `region`, `Postal_Code`, `Street_Name_and_Number`, `Website`, `JID`) VALUES (NULL, '0', :username, :email, :password, :firstname, :middlename, :lastname, :dateofbirth, :phonenumber, :contry, :region, :postalcode, :streetaddress, :website, '')");
     $stmt->bindParam(':username', $username);
     $stmt->bindParam(':email', $email);
     $stmt->bindParam(':password', $password);
