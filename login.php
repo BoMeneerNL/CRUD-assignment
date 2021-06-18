@@ -1,5 +1,5 @@
 <?php
-include_once "scripts/phpstatic/ntse.header.php";
+include_once "scripts/phpstatic/header.php";
 include_once "scripts/phpbg/langhandler.php";
 include_once 'scripts/phpbg/langkit.php';
 if ($_GET['loc'] == "check") {

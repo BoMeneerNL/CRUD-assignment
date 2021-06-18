@@ -10,9 +10,40 @@ function langkit($text): string
     }
 
     return match ($text) {
-        "header_myacc_1" => match ($lang) {
-            default => "Account type"
+        "optional" => match ($lang){
+          "nl" => "Optioneel",
+          default => "optional"
         },
+        "yes" => match ($lang){
+        "nl" => "Ja",
+        default => "Yes",
+        },
+
+        "no" => match ($lang){
+            "nl" => "Nee",
+            default => "No"
+        },
+        "usure"=> match ($lang){
+        "nl" =>"Weet je zeker dat je deze actie wil uitvoeren?:",
+        default =>"Are you sure you want to do this?:"
+        },
+        "title_ask_getinta" => match ($lang){
+            "nl" => "account veranderen naar 'Stagiers account'",
+            default => "Change account to 'Intern account'"
+        },
+        "desc_ask_getinta" => match ($lang){
+            "nl" =>"Het veranderen naar een stagiers account kan slechtere gevolgen hebben voor het veranderen naar een organizatie of educatoren account",
+            default => "Changing to an intern account could badly affect changing to an organization or educational account"
+        },
+        "givenname" => match ($lang) {
+            "nl" => "Voornaam",
+            default => "Given name"
+        },
+        "familyname" => match ($lang) {
+            "nl" => "Achternaam",
+            default => "Family name"
+        },
+        "header_myacc_1" => "Account type",
         "header_myacc_2" => match ($lang) {
             "nl" => "Account/Login informatie",
             default => "Account/Login details"
