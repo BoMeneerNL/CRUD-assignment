@@ -7,11 +7,7 @@ function form()
 {
     switch ($_GET['cnum']) {
         case 0:
-            echo('
-           <form>
-           <option></option>
-           </form> 
-        ');
+
             break;
     }
 }

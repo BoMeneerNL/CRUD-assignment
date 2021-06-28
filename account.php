@@ -111,7 +111,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password']) && $_SESSION['logg
 
         </div>
     </div>
-    <button onclick="redr()" class="border w-auto h-auto mt-2 rounded p-2 bg-ijp-1">Logout</button>
+    <button onclick="redr(0)" class="border w-auto h-auto mt-2 rounded p-2 bg-ijp-1">Logout</button>
 </div>
 ');
         include_once "scripts/phpstatic/underscr.php";

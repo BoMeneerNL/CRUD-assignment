@@ -2,6 +2,16 @@
 include_once 'secureit.php';
 //This file is intended to get userdata from all databases
 //The user used is "usrh" usrh has the following rights: ALL. END on the tables: ALL. END
+function changedat(int $cnum): void{
+    match ($cnum){
+    0 => "ph1",
+    1 => "ph2",
+    2 => "ph3",
+    3 => "ph4",
+    4 => "ph5",
+    5 => "ph6"
+    };
+}
 
 function checkexistence($inputtype): string
 {
@@ -115,7 +125,5 @@ function MyAcIn()
     $stmt->bindParam(':email', $email);
     $stmt->execute();
     $result = $stmt->Fetch(PDO::FETCH_ASSOC);
-
-    var_dump($result);
     return $result;
 }

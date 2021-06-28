@@ -10,6 +10,14 @@ function langkit($text): string
     }
 
     return match ($text) {
+        "signup" => match($lang){
+            "nl" => "Registreren",
+            default => "Sign up"
+        },
+        "signin" => match ($lang){
+        "nl" => "inloggen",
+        default => "Sign in"
+        },
         "optional" => match ($lang){
           "nl" => "Optioneel",
           default => "optional"

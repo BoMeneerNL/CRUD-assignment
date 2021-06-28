@@ -1,5 +1,14 @@
-function redr(){
-    window.location.href = 'account?exit=yes';
+function redr(redrlocation){
+    switch (redrlocation){
+        case 0:
+            window.location.href = 'account?exit=yes';
+            break;
+        case 1:
+            window.location.href = 'search?action=newsearch';
+            break;
+
+    }
+
 }
 function clikr(func) {
     switch (func) {

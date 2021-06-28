@@ -89,5 +89,4 @@ if ($_GET['loc'] == "check") {
 </div>
         ');
 }
-//include_once "scripts/phpstatic/footer.php";
 include_once "scripts/phpstatic/underscr.php";

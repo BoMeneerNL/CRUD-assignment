@@ -2,7 +2,7 @@
 session_start();
 error_reporting(1 | 4);
 if (basename($_SERVER['SCRIPT_NAME'], '.php') == "index") {
-    $titleconcat = "CRUD opdracht - " . $_GET["serve"];
+    $titleconcat = "CRUD opdracht - " . $_GET["site"];
 } else {
     $titleconcat = "CRUD opdracht - " . basename($_SERVER['SCRIPT_NAME'], '.php');
 }
@@ -11,7 +11,7 @@ function langaddr($lang)
     $base = basename($_SERVER['SCRIPT_NAME'], ".php");
 
     return match ($base) {
-        "index" => $base . "?serve=" . $_GET['serve'] . "&lang=" . $lang,
+        "index" => $base . "?site=" . $_GET['site'] . "&lang=" . $lang,
         "register" => $base . "?step=" . $_GET['step'] . "&lang=" . $lang,
         "changedat" => $base,
         default => $base . "?lang=" . $lang
@@ -31,9 +31,9 @@ echo('
     </head>
     <body class="h-screen">
         <div id="langgoto" class="float-right">
-            <div id="langnl" class="m-4">
-                <a href="' . langaddr("nl") . '"><img src="assets/img/flags/nl.svg" class="rounded" width="40"></a><br/>
-                <a href="' . langaddr("en") . '"><img src="assets/img/flags/en.svg" class="rounded" width="40"></a>
+            <div id="langnl" class="my-4 mr-10">
+                <a href="' . langaddr("nl") . '"><img src="assets/img/flags/nl.svg" alt="lang_nl_change" class="rounded" width="40"></a><br/>
+                <a href="' . langaddr("en") . '"><img src="assets/img/flags/en.svg" alt="lang_en_change" class="rounded" width="40"></a>
             </div>
         </div>
 ');

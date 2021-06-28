@@ -2,15 +2,15 @@
   "name": "crud",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "",
   "scripts": {
-    "tw:build": "tailwindcss build ./scripts/cssimporter/tailwind.css -o ./scripts/css/tailwind.css"
+    "tw:build": "tailwindcss build -i ./scripts/cssimporter/tailwind.css -o ./scripts/css/tailwind.css"
   },
   "author": "BoMeneerNL @ Github",
   "license": "ISC",
   "dependencies": {
     "autoprefixer": "^10.2.6",
-    "postcss": "^8.3.0",
-    "tailwindcss": "^2.1.4"
+    "postcss": "^8.3.5",
+    "tailwindcss": "^2.2.4"
   }
 }
