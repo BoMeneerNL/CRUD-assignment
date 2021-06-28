@@ -13,18 +13,8 @@ function form()
 }
 
 if (isset($_GET['cnum'])) {
-    if (isset($_GET['val'])) {
-        if ($_GET['val'] == "yes") {
-            switch ($_GET['cnum']){
-                case 0:
-
-
-                    break;
-            }
-        } else {
-            form();
-        }
-    } else {
-        form();
-    }
+    form();
+}
+else{
+    echo("Oops, cnum is not set");
 }

@@ -11,6 +11,9 @@ CREATE TABLE `boarddat` (
                             `boarddesc` varchar(10000) NOT NULL,
                             `boardauthor` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+INSERT INTO `boarddat` (`boardid`, `boardtitle`, `boarddesc`, `boardauthor`) VALUES
+(1, 'VGhpcyBpcyBhIFRlc3QgVGl0bGU=', 'This is a \"long\" test text this text is created By Bo \"BoMeneer\" H on the twenty-eighth of June in two thousand twenty-one this sentence is used as a search query: the next sentence is a search query tester: MyNaMeisJeff', 'Qm9NZW5lZXI='),
+(2, 'VGhpcyBpcyBhIFRlc3QgVGl0bGU=', 'This is a \"long\" test text this text is created By Bo \"BoMeneer\" H on the twenty-eighth of June in two thousand twenty-one this sentence is used as a search query: the next sentence is a search query tester: ThisIssparta', 'Qm9NZW5lZXI=');
 CREATE TABLE `userdat` (
                            `UNID` int(11) NOT NULL,
                            `ranked` int(1) NOT NULL DEFAULT 0,
@@ -36,11 +39,10 @@ ALTER TABLE `boarddat`
 ALTER TABLE `userdat`
     ADD PRIMARY KEY (`UNID`);
 ALTER TABLE `boarddat`
-    MODIFY `boardid` int(100) NOT NULL AUTO_INCREMENT;
+    MODIFY `boardid` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 ALTER TABLE `userdat`
     MODIFY `UNID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

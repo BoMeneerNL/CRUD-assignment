@@ -35,7 +35,7 @@ echo('
                 </button>
                 </a>
                 <button type="button"
-                    class=" mt-2 w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-3 py-1 bg-red-600 text-base font-medium text-white bg-ijp-lichtblauw hover:bg-ijp-donkerblauw focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm" onclick="clikr(' . "'accept_cookies'" . ')">
+                    class=" mt-2 w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-3 py-1 bg-red-600 text-base font-medium text-white bg-ijp-lichtblauw hover:bg-ijp-donkerblauw focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm" onclick="clikr(0)">
                     ' . langkit("cookies_knop") . '
                 </button>
             </div>

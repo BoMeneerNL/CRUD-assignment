@@ -233,6 +233,7 @@ if (isset($_GET['step'])) {
         case "3validate":
             $_SESSION['reg_firstname'] = $_POST['firstname'];
             $_SESSION['reg_lastname'] = $_POST['lastname'];
+            header("location: register?step=finalize");
             break;
         case "finalize":
             include_once "scripts/phpbg/sql-pdo/registerinject.php";
