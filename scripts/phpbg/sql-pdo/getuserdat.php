@@ -2,18 +2,7 @@
 include_once 'secureit.php';
 //This file is intended to get userdata from all databases
 //The user used is "usrh" usrh has the following rights: ALL. END on the tables: ALL. END
-function changedat(int $cnum): void{
-    match ($cnum){
-    0 => "ph1",
-    1 => "ph2",
-    2 => "ph3",
-    3 => "ph4",
-    4 => "ph5",
-    5 => "ph6"
-    };
-}
-
-function checkexistence($inputtype): string
+function checkexistence($inputtype,$edat): string
 {
     $dblogin = gdbname();
     $dbdata = explode(";", $dblogin);
@@ -21,6 +10,8 @@ function checkexistence($inputtype): string
         $input = base64_encode($_SESSION['reg_username']);
     } else if ($inputtype == "email") {
         $input = base64_encode($_SESSION['reg_email']);
+    }else if($inputtype == "emailchange"){
+        $input = base64_encode($edat);
     }
     $conn = new PDO("mysql:host=$dbdata[0];dbname=$dbdata[1]", $dbdata[2], $dbdata[3]);
     // set the PDO error mode to exception
@@ -30,7 +21,10 @@ function checkexistence($inputtype): string
     } else if ($inputtype == "email") {
         $query = $conn->prepare('SELECT * FROM userdat WHERE Email = :input');
     }
-    $query->bindParam(':input', $input);
+    else if($inputtype == "emailchange"){
+        $query = $conn->prepare('SELECT * FROM userdat WHERE Email =:input');
+    }
+    $query->bindParam(':input', $edat);
     $query->execute();
     $conn = null;
     if ($query->rowCount() > 0) {
@@ -104,7 +98,6 @@ function logincheck()
         }
     }
     if (!$gothru) {
-        //Clear Session Data
         $_SESSION['email'] = null;
         $_SESSION['password'] = null;
         header("location: login");
@@ -124,6 +117,5 @@ function MyAcIn()
     $stmt = $conn->prepare("SELECT * FROM userdat WHERE Email = :email");
     $stmt->bindParam(':email', $email);
     $stmt->execute();
-    $result = $stmt->Fetch(PDO::FETCH_ASSOC);
-    return $result;
+    return $stmt->Fetch(PDO::FETCH_ASSOC);
 }

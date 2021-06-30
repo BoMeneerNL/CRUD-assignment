@@ -3,13 +3,35 @@ function langkit($text): string
 {
     if (isset($_COOKIE['choosenlanguage'])) {
         $lang = $_COOKIE['choosenlanguage'];
-    } else if (isset($_GET['lang'])) {
-        $lang = $_GET['lang'];
     } else {
         $lang = "en";
     }
 
     return match ($text) {
+        "desc_ask_uchange" => match ($lang){
+            "nl" =>"Wilt u uw gebruikersnaam veranderen?, type hieronder dan je nieuwe gebruikersnaam en klik op 'ja'<br/><br/>Na het invullen en op 'ja' te klikken wordt u door verwezen naar de login pagina, vanaf dan heeft u, u nieuwe gebruikersnaam",
+            default => "Do you want to change your username?,type the new username here under and click 'yes'<br/><br/>after filling in your new username you will be redirected to the login page, after this redirect you have your new username"
+        },
+        "title_ask_uchange" => match ($lang){
+            "nl"=>langkit("username")." veranderen?",
+            default=>"change ".langkit("username")."?"
+        },
+        "new_username" =>match($lang){
+          "nl" => "Nieuwe gebruikersnaam",
+          default => "New username"
+        },
+        "desc_ask_echange" => match ($lang){
+          "nl" =>"Wilt u uw email veranderen?, type hieronder dan het nieuwe email adres en klik op 'ja'<br/><br/>Na het invullen en op 'ja' te klikken wordt u door verwezen naar de login pagina, vanaf dan werkt enkel u nieuwe email address",
+          default => "Do you want to change your email address?,type the new email address here under and click 'yes'<br/><br/>after filling in your new email address you will be redirectd to the login page, after this redirect only your new email address will work"
+        },
+        "title_ask_echange" => match ($lang){
+          "nl"=>langkit("email_address")." veranderen?",
+          default=>"change ".langkit("email_address")."?"
+        },
+        "new_email" => match ($lang){
+        "nl"=>"Nieuw ".langkit("email_address"),
+        default => "New ".langkit("email_address")
+        },
         "signup" => match($lang){
             "nl" => "Registreren",
             default => "Sign up"

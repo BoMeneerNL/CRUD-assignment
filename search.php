@@ -9,25 +9,10 @@ include_once "scripts/phpstatic/welcome.php";
  * </div>
  * ');
  * if(isset($_GET['action'])){
- * if($_GET['action'] == "newsearch"){
- * }
+ *  if($_GET['action'] == "newsearch"){
+ *  }
  * }
 */
-function update()
-{
-    $dblogin = gdbname();
-    $dbdata = explode(";", $dblogin);
-    $conn = new PDO("mysql:host=$dbdata[0];dbname=$dbdata[1]", $dbdata[2], $dbdata[3]);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt = $conn->prepare("UPDATE :inserter SET :inserter=:inserting WHERE :inserter=:email");
-    $stmt->bindParam(':email', $email);
-    $stmt->bindParam(':inserter', $inserter);
-    $stmt->bindParam(':inserting', $inserting);
-    $stmt->execute();
-    $result = $stmt->Fetch(PDO::FETCH_ASSOC);
-    return $result;
-}
-
 function search($sitem,$rtrn)
 {
     $dblogin = gdbname();
@@ -61,18 +46,18 @@ echo('
         <div id="searchbar" class="w-auto h-auto py-2">
                 <div id="searchitem" class="border border-ijp-4 rounded">
                 <input id="searchbox" class=" border border-ijp-4 rounded w-5/6 float-right"/>
-                <img onclick="clikr(1)" src="assets/img/search.svg" width="30px">
+                <img onclick="clikr(1)" src="assets/img/search.svg" width="30px" alt="search logo">
                 </div>
             </div>
 ');
-echo($amount);
+echo("Found " . $amount . " records");
 if ($amount < 1) {
     echo('<p class=" mt-2 font-semibold">Could not find a record based on your information :(</p>');
 } else {
     while ($chsum < $amount) {
-        $boardtitle = $sting[$chsum]["boardtitle"];
+        $boardtitle = base64_decode($sting[$chsum]["boardtitle"]);
         $boarddesc = $sting[$chsum]["boarddesc"];
-        $boardauthor = $sting[$chsum]["boardauthor"];
+        $boardauthor = base64_decode($sting[$chsum]["boardauthor"]);
         echo('
     <div class="w-auto h-auto m-6 border border-ijp-4">
     <p class="mx-6 font-semibold">' . $boardtitle . '</p>
@@ -85,6 +70,6 @@ if ($amount < 1) {
 ');
         $chsum++;
     }
-    echo('</div></div>');
+    echo('<p class="font-semibold">This is the end...</p>');
 }
 include_once "scripts/phpstatic/underscr.php";
