@@ -116,7 +116,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password']) && $_SESSION['logg
     </div>
 </div>
         ');
-    }else if(isset($_GET['chshow']) && $_GET['chshow'] == "ask2"){
+    }/*else if(isset($_GET['chshow']) && $_GET['chshow'] == "ask2"){
         echo('
         <div class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
     <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
@@ -158,7 +158,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password']) && $_SESSION['logg
     </div>
 </div>
         ');
-    }
+    }*/
         echo('
         <div id="bgh" class="h-screen w-screen bg-gray-200 ">
     <div id="nav">
@@ -180,7 +180,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password']) && $_SESSION['logg
             <div>
                 <p class="pb-2">' . langkit("header_myacc_2") . ':</p>
                 <p>' . langkit("email_address") . ': ' . base64_decode($userdat['Email']) . '<a href="account?chshow=ask1" class="text-ijp-2 p-4">Change</a></p>
-                <p>' . langkit("username") . ': ' . base64_decode($userdat['Username']) . '<a href="account?chshow=ask2" class="text-ijp-2 p-4">Change</a></p>
+                <p>' . langkit("username") . ': ' . base64_decode($userdat['Username']) . '<!--<a href="account?chshow=ask2" class="text-ijp-2 p-4">Change</a></p>-->
                 <p>' . langkit("password") . ': ' . $passdot . '</p>
 
 
