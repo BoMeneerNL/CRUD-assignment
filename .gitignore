@@ -1,8 +1,10 @@
 node_modules
+bin
+obj
 .idea
-assets/img/*.psd
-assets/img/*.rar
-assets/img/*.jpg
-assets/*.*
-assets/userdat/*.*
-secureit.php
+*.psd
+*.rar
+PHP_version/assets/img/*.jpg
+PHP_version/assets/*.*
+PHP_version/assets/userdat/*.*
+PHP_version/secureit.php

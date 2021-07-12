@@ -1,0 +1,17 @@
+{
+  "name": "crud_aspnet",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "BoMeneerNL",
+  "license": "MIT",
+  "dependencies": {
+    "autoprefixer": "^10.3.0",
+    "cssnano": "^5.0.6",
+    "postcss": "^8.3.5",
+    "tailwindcss": "^2.2.4"
+  }
+  "scripts": {
+    "cssbd": ""
+    "cssbp": "tailwind -i -o --minify"
+  }
+}
