@@ -27,11 +27,7 @@ function checkexistence($inputtype,$edat): string
     $query->bindParam(':input', $edat);
     $query->execute();
     $conn = null;
-    if ($query->rowCount() > 0) {
-        return "DAE";
-    } else {
-        return "empty";
-    }
+    return $query->rowCount() > 0 ? "DAE" : "empty";
 }
 
 function IPSC(): int

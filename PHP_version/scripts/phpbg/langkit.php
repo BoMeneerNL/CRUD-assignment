@@ -1,11 +1,7 @@
 <?php
 function langkit($text): string
 {
-    if (isset($_COOKIE['choosenlanguage'])) {
-        $lang = $_COOKIE['choosenlanguage'];
-    } else {
-        $lang = "en";
-    }
+    $lang = $_COOKIE['choosenlanguage'] ?: "en";
 
     return match ($text) {
         "desc_ask_uchange" => match ($lang){

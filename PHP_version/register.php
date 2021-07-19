@@ -8,25 +8,13 @@ function prel_reg_1($bcn): string
 {
     if (isset($_COOKIE['errorc'])) {
         if ($bcn == 1) {
-            if ($_COOKIE['errorc'] == "nve" || $_COOKIE['errorc'] == "edae") {
-                return "ijp-3";
-            } else {
-                return "ijp-2";
-            }
+            return $_COOKIE['errorc'] == "nve" || $_COOKIE['errorc'] == "edae" ? "ijp-3" : "ijp-2";
         }
-        if ($bcn == 2) {
-            if ($_COOKIE['errorc'] == "udae") {
-                return "ijp-3";
-            } else {
-                return "ijp-2";
-            }
+        elseif ($bcn == 2) {
+            return $_COOKIE['errorc'] == "udae" ? "ijp-3" : "ijp-2";
         }
-        if ($bcn == 3) {
-            if ($_COOKIE['errorc'] == "pts") {
-                return "ijp-3";
-            } else {
-                return "ijp-2";
-            }
+        elseif ($bcn == 3) {
+            return $_COOKIE['errorc'] == "pts" ? "ijp-3" : "ijp-2";
         }
     } else {
         return "ijp-2";
@@ -123,12 +111,12 @@ if (isset($_GET['step'])) {
                     setcookie('errorc', "nve");
                     $error = true;
                 }
-                $echeck = checkexistence("email");
+                $echeck = checkexistence("email",null);
                 if ($echeck == "DAE" && $error == false) {
                     setcookie("errorc", "edae");
                     $error = true;
                 }
-                $ucheck = checkexistence("username");
+                $ucheck = checkexistence("username",null);
                 if ($ucheck == "DAE" && $error == false) {
                     setcookie("errorc", "udae");
                     $error = true;

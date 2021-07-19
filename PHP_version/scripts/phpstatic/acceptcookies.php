@@ -1,12 +1,8 @@
 <?php
 include_once 'scripts/phpbg/langkit.php';
-if (isset($_GET['serve'])) {
-    $linktag1 = "<a href='index?serve=' " . $_GET['serve'] . "&lang=nl' class='p-0 m-0'>";
-    $linktag2 = "<a href='index?serve=' " . $_GET['serve'] . "&lang=en' class='p-0 m-0'>";
-} else {
-    $linktag1 = "<a href='" . basename($_SERVER['SCRIPT_NAME'], '.php') . "?lang=nl' class='p-0 m-0'>";
-    $linktag2 = "<a href='" . basename($_SERVER['SCRIPT_NAME'], '.php') . "?lang=en' class='p-0 m-0'>";
-}
+    $linktag1 = isset($_GET['serve']) ? "<a href='index?serve=' " . $_GET['serve'] . "&lang=nl' class='p-0 m-0'>" : "<a href='" . basename($_SERVER['SCRIPT_NAME'], '.php') . "?lang=nl' class='p-0 m-0'>";
+    $linktag2 = isset($_GET['serve']) ? "<a href='index?serve=' " . $_GET['serve'] . "&lang=en' class='p-0 m-0'>" : "<a href='" . basename($_SERVER['SCRIPT_NAME'], '.php') . "?lang=en' class='p-0 m-0'>";
+
 echo('
 <div class="fixed z-10 inset-0 overflow-y-auto" role="dialog" aria-modal="true">
     <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">

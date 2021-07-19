@@ -26,20 +26,15 @@ function search($sitem,$rtrn)
     $result = $query->FetchAll(PDO::FETCH_ASSOC);
     $amount = $query->rowCount();
     $conn = null;
-    if($rtrn == 0){
-        return $result.";".$amount;
-    }
-    elseif($rtrn == 1){
-        return $result;
-    }
+    return $rtrn ? $result.";".$amount : $result;
 
 }
 
 $chsum = 0;
-$sres = explode(";",search($_GET['search'],0));
+$sres = explode(";",search($_GET['search'],true));
 $amount = $sres[1];
 $boardtitle = null;
-$sting = search($_GET['search'],1);
+$sting = search($_GET['search'],false);
 echo('
 <div class="justify-center flex pt-3">
     <div class="max-w-md w-full space-y-8">
@@ -52,12 +47,21 @@ echo('
 ');
 echo("Found " . $amount . " records");
 if ($amount < 1) {
-    echo('<p class=" mt-2 font-semibold">Could not find a record based on your information :(</p>');
+    echo('<p class="mt-2 font-semibold">Could not find a record based on your information :(</p>');
 } else {
     while ($chsum < $amount) {
         $boardtitle = base64_decode($sting[$chsum]["boardtitle"]);
+		$boardtitle = str_replace("<","",$boardtitle);
+        $boardtitle = str_replace("/","",$boardtitle);
+        $boardtitle = str_replace(">","",$boardtitle);
         $boarddesc = $sting[$chsum]["boarddesc"];
+        $boarddesc = str_replace("<","",$boarddesc);
+        $boarddesc = str_replace("/","",$boarddesc);
+        $boarddesc = str_replace(">","",$boarddesc);
         $boardauthor = base64_decode($sting[$chsum]["boardauthor"]);
+        $boardauthor = str_replace("<","",$boardauthor);
+        $boardauthor = str_replace("/","",$boardauthor);
+        $boardauthor = str_replace(">","",$boardauthor);
         echo('
     <div class="w-auto h-auto m-6 border border-ijp-4">
     <p class="mx-6 font-semibold">' . $boardtitle . '</p>

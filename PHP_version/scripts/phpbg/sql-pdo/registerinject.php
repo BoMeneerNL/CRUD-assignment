@@ -5,6 +5,7 @@ if (isset($_SESSION['reg_username'])) {
     $username = base64_encode($_SESSION['reg_username']);
 } else {
     $username = null;
+    $gothru = false;
 }
 
 if (isset($_SESSION['reg_email'])) {
@@ -20,18 +21,14 @@ if (isset($_SESSION['reg_password']) && $gothru) {
     $password = null;
     $gothru = false;
 }
+
 if (isset($_SESSION['reg_firstname']) && $gothru) {
     $firstname = base64_encode($_SESSION['reg_firstname']);
 } else {
     $firstname = null;
     $gothru = false;
 }
-
-if (isset($_SESSION['reg_middlename'])) {
-    $middlename = base64_encode($_SESSION['reg_middlename']);
-} else {
-    $middlename = null;
-}
+$middlename = $_SESSION['reg_middlename'] ?: null;
 
 if (isset($_SESSION['reg_lastname'])) {
     $lastname = base64_encode($_SESSION['reg_lastname']);
@@ -39,50 +36,16 @@ if (isset($_SESSION['reg_lastname'])) {
     $lastname = null;
     $gothru = false;
 }
-if (isset($_SESSION['dateofbirth'])) {
-    $dateofbirth = base64_encode($_SESSION['dateofbirth']);
-} else {
-    $dateofbirth = null;
-}
-if (isset($_SESSION['phonenumber'])) {
-    $phonenumber = base64_encode($_SESSION['phonenumber']);
-} else {
-    $phonenumber = null;
-}
-if (isset($_SESSION['reg_country']) && $gothru) {
-    $country = base64_encode($_SESSION['reg_country']);
-} else {
-    $country = null;
-}
 
-if (isset($_SESSION['reg_region']) && $gothru) {
-    $region = base64_encode($_SESSION['reg_region']);
-} else {
-    $region = null;
-}
-
-if (isset($_SESSION['reg_city']) && $gothru) {
-    $city = base64_encode($_SESSION['reg_city']);
-} else {
-    $city = null;
-}
-
-if (isset($_SESSION['reg_postalcode']) && $gothru) {
-    $postalcode = base64_encode($_SESSION['reg_postalcode']);
-} else {
-    $postalcode = null;
-}
-
-if (isset($_SESSION['reg_streetaddress']) && $gothru) {
-    $streetaddress = base64_encode($_SESSION['reg_streetaddress']);
-} else {
-    $streetaddress = null;
-}
-if (isset($_SESSION['reg_website']) && $gothru) {
-    $website = base64_encode($_SESSION['reg_website']);
-} else {
-    $website = null;
-}
+$dateofbirth = $_SESSION['dateofbirth'] ?: null;
+$phonenumber = $_SESSION['phonenumber'] ?: null;
+$country = $_SESSION['reg_country'] ?: null;
+$region = $_SESSION['reg_region'] ?: null;
+$city = $_SESSION['reg_city'] ?: null;
+$postalcode = $_SESSION['reg_postalcode'] ?: null;
+$streetaddress = $_SESSION['reg_streetaddress'] ?: null;
+$website = $_SESSION['reg_website'] ?: null;
+$postalcode = $_SESSION['reg_postalcode'] ?: null;
 
 if ($gothru) {
     echo('
@@ -112,16 +75,8 @@ if ($gothru) {
     header("Location: login");
 } else {
     echo('<p>Oops, something(s) went wrong:</p><br/>');
-    if (!isset($email) || $email == null) {
-        echo(' <p>Could not get a valid email variable (Error_Email_Null_Selector)</p><br/>');
-    }
-    if (!isset($password) || $password == null) {
-        echo(' <p>Could not get a valid password variable (Error_Password_Null_Selector)</p><br/>');
-    }
-    if (!isset($firstname) || $firstname == null) {
-        echo(' <p>Could not get a valid Firstname variable (Error_Firstname_Null_Selector)</p><br/>');
-    }
-    if (!isset($lastname) || $lastname == null) {
-        echo(' <p>Could not get a valid Surname variable (Error_Surname_Null_Selector)</p><br/>');
-    }
+    $email = $email == null ? "<p>Could not get a valid email variable (Error_Email_Null_Selector)</p><br/>" : "";
+    $password = $password == null ? "<p>Could not get a valid password variable (Error_Password_Null_Selector)</p><br/>" : "";
+    $firstname = $firstname == null ? "<p>Could not get a valid Firstname variable (Error_Firstname_Null_Selector)</p><br/>" : "";
+    $lastname = $lastname == null ? "<p>Could not get a valid Surname variable (Error_Surname_Null_Selector)</p><br/>" : "";
 }

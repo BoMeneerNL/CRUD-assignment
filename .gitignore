@@ -7,4 +7,5 @@ obj
 PHP_version/assets/img/*.jpg
 PHP_version/assets/*.*
 PHP_version/assets/userdat/*.*
-secureit.php
+PHP_version/scripts/phpbg/sql-pdo/secureit.php
+

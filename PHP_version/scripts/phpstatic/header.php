@@ -1,11 +1,9 @@
 <?php
 session_start();
 error_reporting(1 | 4);
-if (basename($_SERVER['SCRIPT_NAME'], '.php') == "index") {
-    $titleconcat = "CRUD opdracht - " . $_GET["site"];
-} else {
-    $titleconcat = "CRUD opdracht - " . basename($_SERVER['SCRIPT_NAME'], '.php');
-}
+$tcc = "CRUD opdracht - ";
+$titleconcat = $tcc . basename($_SERVER['SCRIPT_NAME'], '.php') == "index" ? $_GET["site"] : basename($_SERVER['SCRIPT_NAME'], '.php');
+
 function langaddr($lang)
 {
     $base = basename($_SERVER['SCRIPT_NAME'], ".php");

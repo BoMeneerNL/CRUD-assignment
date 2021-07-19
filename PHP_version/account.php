@@ -11,9 +11,6 @@ if (isset($_SESSION['email']) && isset($_SESSION['password']) && $_SESSION['logg
     $ipsc = IPSC();
     $userdat = MyAcIn();
     $middlename = $userdat["Middle_Names"];
-    if($middlename != null){
-
-    }
     //$firstCharacter = substr($userdat[/*add for later:Username array ""*/], 0, 1);
     match ($userdat["ranked"]) {
         "0" => $rankname = "Not selected",
@@ -166,15 +163,12 @@ if (isset($_SESSION['email']) && isset($_SESSION['password']) && $_SESSION['logg
         
         </div>
     </div>
-    <div>
+    <div class="px-3">
         <p class="text-xl font-semibold">My Account (' . base64_decode($userdat["Username"]) . '):</p>
         <div class="grid grid-cols-1 divide-y-2 divide-blue-200">
             <div>
                 <p class="pb-2">' . langkit("header_myacc_1") . ':</p>
                 <p>UserID: ' . $userdat["UNID"] . '</p>
-                ');
-
-        echo('
                 <p>Type Account: ' . $rankname . '<a href="account?chshow=ask0" class="text-ijp-2 p-4">Change</a></p>
             </div>
             <div>

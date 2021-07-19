@@ -4,12 +4,13 @@
   "description": "",
   "main": "",
   "scripts": {
-    "tw:build": "tailwindcss build -i ./scripts/cssimporter/tailwind.css -o ./scripts/css/tailwind.css"
+    "tw:build": "tailwindcss build -i ./scripts/cssimporter/tailwind.css -o ./scripts/css/tailwind.css --minify"
   },
   "author": "BoMeneerNL @ Github",
   "license": "ISC",
   "dependencies": {
     "autoprefixer": "^10.2.6",
+    "cssnano": "^5.0.6",
     "postcss": "^8.3.5",
     "tailwindcss": "^2.2.4"
   }

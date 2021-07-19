@@ -15,20 +15,6 @@ module.exports = {
             },
             height: {"h-30": '30px', "h-32": '32px'},
             width: {"w-30": '30px', "w-32": '32px'},
-            screens: {
-                'nHD': "640px",
-                'qHD': "960px",
-                'HD': "1280px",
-                'WXGA': "1366px",
-                'HD+': "1600px",
-                'FHD': "1920px",
-                'QHD': "2560px",
-                'QHD+': "3200px",
-                '4KUHD': "3840px",
-                'F4KUHD': "4096px",
-                '5KUHD': "5120px",
-                '8KUHD': "7680px"
-            },
         },
         variants: {
             extend: {},
