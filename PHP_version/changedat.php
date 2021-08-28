@@ -7,9 +7,6 @@ include_once "scripts/phpbg/langhandler.php";
 function form()
 {
     if (isset($_SESSION['email'])) {
-        if($_GET['cnum'] >= 1 && $_GET['cnum'] <= 10){
-
-        }
         $dblogin = gdbname();
         $dbdata = explode(";", $dblogin);
         $email = base64_encode($_SESSION['email']);
@@ -54,9 +51,9 @@ function form()
     } else {
         echo("
             <br/><p>Error: Oops, could not find: 'Email.session', try logging in before re-doing this action </p><br/>
-            <p>You will be redirected in about 5 seconds to 'account' or 'login'</p>
+            <p>You will be redirected in about 3 seconds to 'account' or 'login'</p>
 ");
-        sleep(5);
+        sleep(3);
     }
 }
 

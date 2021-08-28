@@ -156,42 +156,40 @@ if (isset($_SESSION['email']) && isset($_SESSION['password']) && $_SESSION['logg
 </div>
         ');
     }*/
-        echo('
-        <div id="bgh" class="h-screen w-screen bg-gray-200 ">
-    <div id="nav">
-        <div class="my-2">
+        echo("
+        <div id=\"bgh\" class=\"h-screen w-screen bg-gray-200 \">
+    <div id=\"nav\">
+        <div class=\"my-2\">
         
         </div>
     </div>
-    <div class="px-3">
-        <p class="text-xl font-semibold">My Account (' . base64_decode($userdat["Username"]) . '):</p>
-        <div class="grid grid-cols-1 divide-y-2 divide-blue-200">
+    <div class=\"px-3\">
+        <p class=\"text-xl font-semibold\">My Account (" . base64_decode($userdat["Username"]) . "):</p>
+        <div class=\"grid grid-cols-1 divide-y-2 divide-blue-200\">
             <div>
-                <p class="pb-2">' . langkit("header_myacc_1") . ':</p>
-                <p>UserID: ' . $userdat["UNID"] . '</p>
-                <p>Type Account: ' . $rankname . '<a href="account?chshow=ask0" class="text-ijp-2 p-4">Change</a></p>
+                <p class=\"pb-2\">" . langkit("header_myacc_1") . ":</p>
+                <p>UserID: ".$userdat["UNID"]."</p>
+                <p>Type Account: $rankname <a href=\"account?chshow=ask0\" class=\"text-ijp-2 p-4\">Change</a></p>
             </div>
             <div>
-                <p class="pb-2">' . langkit("header_myacc_2") . ':</p>
-                <p>' . langkit("email_address") . ': ' . base64_decode($userdat['Email']) . '<a href="account?chshow=ask1" class="text-ijp-2 p-4">Change</a></p>
-                <p>' . langkit("username") . ': ' . base64_decode($userdat['Username']) . '<!--<a href="account?chshow=ask2" class="text-ijp-2 p-4">Change</a></p>-->
-                <p>' . langkit("password") . ': ' . $passdot . '</p>
-
-
+                <p class=\"pb-2\">" . langkit("header_myacc_2") . ":</p>
+                <p>" . langkit("email_address") . ": " . base64_decode($userdat['Email']) . "<a href=\"account?chshow=ask1\" class=\"text-ijp-2 p-4\">Change</a></p>
+                <p>" . langkit("username") . ": " . base64_decode($userdat['Username']) . "<!--<a href=\"account?chshow=ask2\" class=\"text-ijp-2 p-4\">Change</a></p>-->
+                <p>" . langkit("password") . ": $passdot</p>
             </div>
             <div>
-                <p class="pb-2">' . langkit("header_myacc_3") . ':</p>
-                <p>' . langkit("givenname") . ': ' . base64_decode($userdat["First_Name"]) . '</p>
-                <p>'.$middlename.'</p>
-                <p>' . langkit("familyname") . ': ' . base64_decode($userdat["Surname"]) . '</p>
+                <p class=\"pb-2\">" . langkit("header_myacc_3") . ":</p>
+                <p>" . langkit("givenname") . ": " . base64_decode($userdat["First_Name"]) . "</p>
+                <p>$middlename</p>
+                <p>" . langkit("familyname") . ": " . base64_decode($userdat["Surname"]) . "</p>
                 <p></p>
             </div>
 
         </div>
     </div>
-    <button onclick="redr(0)" class="border w-auto h-auto mt-2 rounded p-2 bg-ijp-1">Logout</button>
+    <button onclick=\"redr(0)\" class=\"border w-auto h-auto mt-2 rounded p-2 bg-ijp-1\">Logout</button>
 </div>
-');
+");
         include_once "scripts/phpstatic/underscr.php";
     } else {
         header("location: login");

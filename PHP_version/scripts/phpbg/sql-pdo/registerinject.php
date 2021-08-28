@@ -48,9 +48,8 @@ $website = $_SESSION['reg_website'] ?: null;
 $postalcode = $_SESSION['reg_postalcode'] ?: null;
 
 if ($gothru) {
-    echo('
-        <p>Please wait... adding your account to the database...</p>
-    ');
+    echo '<p>Please wait... adding your account to the database...</p>';
+
     $dblogin = gdbname();
     $dbdata = explode(";", $dblogin);
     $conn = new PDO("mysql:host=$dbdata[0];dbname=$dbdata[1]", $dbdata[2], $dbdata[3]);

@@ -1,20 +1,16 @@
 <?php
 include_once 'secureit.php';
-//This file is intended to get userdata from all databases
-//The user used is "usrh" usrh has the following rights: ALL. END on the tables: ALL. END
+
 function checkexistence($inputtype,$edat): string
 {
     $dblogin = gdbname();
-    $dbdata = explode(";", $dblogin);
-    if ($inputtype == "username") {
-        $input = base64_encode($_SESSION['reg_username']);
-    } else if ($inputtype == "email") {
-        $input = base64_encode($_SESSION['reg_email']);
-    }else if($inputtype == "emailchange"){
-        $input = base64_encode($edat);
-    }
-    $conn = new PDO("mysql:host=$dbdata[0];dbname=$dbdata[1]", $dbdata[2], $dbdata[3]);
-    // set the PDO error mode to exception
+    $input = match($inputtype){
+        "username" => base64_encode($_SESSION['reg_username']),
+        "email" => base64_encode($_SESSION['reg_email']),
+        "emailchange" => base64_encode($edat)
+    };
+    $conn = new PDO("mysql:host=$dblogin[0];dbname=$dblogin[1]", $dblogin[2], $dblogin[3]);
+
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     if ($inputtype == "username") {
         $query = $conn->prepare('SELECT * FROM userdat WHERE Username = :input');
@@ -29,15 +25,13 @@ function checkexistence($inputtype,$edat): string
     $conn = null;
     return $query->rowCount() > 0 ? "DAE" : "empty";
 }
-
 function IPSC(): int
 {
     $dblogin = gdbname();
-    $dbdata = explode(";", $dblogin);
+    $conn = new PDO("mysql:host=$dblogin[0];dbname=$dblogin[1]", $dblogin[2], $dblogin[3]);
     $email = $_SESSION['email'];
     $email = base64_encode($email);
-    $conn = new PDO("mysql:host=$dbdata[0];dbname=$dbdata[1]", $dbdata[2], $dbdata[3]);
-    // set the PDO error mode to exception
+
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $query = $conn->prepare('SELECT * FROM userdat WHERE Email = :email');
     $query->bindParam(':email', $email);
@@ -66,12 +60,11 @@ function IPSC(): int
 function logincheck()
 {
     $dblogin = gdbname();
-    $dbdata = explode(";", $dblogin);
     $gothru = false;
     if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
         try {
             $email = base64_encode($_SESSION['email']);
-            $conn = new PDO("mysql:host=$dbdata[0];dbname=$dbdata[1]", $dbdata[2], $dbdata[3]);
+            $conn = new PDO("mysql:host=$dblogin[0];dbname=$dblogin[1]", $dblogin[2], $dblogin[3]);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $stmt = $conn->prepare("SELECT password FROM userdat WHERE Email = :email");
             $stmt->bindParam(':email', $email);
@@ -106,9 +99,8 @@ function logincheck()
 function MyAcIn()
 {
     $dblogin = gdbname();
-    $dbdata = explode(";", $dblogin);
     $email = base64_encode($_SESSION['email']);
-    $conn = new PDO("mysql:host=$dbdata[0];dbname=$dbdata[1]", $dbdata[2], $dbdata[3]);
+    $conn = new PDO("mysql:host=$dblogin[0];dbname=$dblogin[1]", $dblogin[2], $dblogin[3]);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $stmt = $conn->prepare("SELECT * FROM userdat WHERE Email = :email");
     $stmt->bindParam(':email', $email);

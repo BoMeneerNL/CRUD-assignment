@@ -24,9 +24,7 @@ function prel_reg_1($bcn): string
 if (isset($_GET['step'])) {
     switch ($_GET['step']) {
         case 1:
-            $bordercolour_1 = prel_reg_1(1);
-            $bordercolour_2 = prel_reg_1(2);
-            $bordercolour_3 = prel_reg_1(3);
+            $bordercolours = array(prel_reg_1(1),prel_reg_1(2),prel_reg_1(3));
             if (isset($_COOKIE['errorc'])) {
                 switch ($_COOKIE['errorc']) {
                     case "nve":
@@ -62,19 +60,19 @@ if (isset($_GET['step'])) {
                                 <div class="py-0.5">
                                     <label for="email" class="sr-only">' . langkit("email_address") . '</label>
                                     <input id="email" name="email" type="email" required
-                                        class="rounded relative block w-full px-3 py-2 border border-' . $bordercolour_1 . ' placeholder-gray-500 text-gray-900 focus:outline-none focus:z-10 text-sm rounded-md"
+                                        class="rounded relative block w-full px-3 py-2 border border-' . $bordercolours[0] . ' placeholder-gray-500 text-gray-900 focus:outline-none focus:z-10 text-sm rounded-md"
                                         placeholder="' . langkit("email_address") . '">
                                 </div>
                                 <div class="py-0.5">
                                     <label for="username" class="sr-only">Username</label>
                                     <input id="username" name="username" type="text" required
-                                        class="rounded relative block w-full px-3 py-2 border border-' . $bordercolour_2 . ' placeholder-gray-500 text-gray-900 focus:outline-none text-sm rounded-md"
+                                        class="rounded relative block w-full px-3 py-2 border border-' . $bordercolours[1] . ' placeholder-gray-500 text-gray-900 focus:outline-none text-sm rounded-md"
                                         placeholder="' . langkit("username") . '">
                                 </div>
                                 <div class="py-0.5">
                                     <label for="password" class="sr-only">Password</label>
                                     <input id="password" name="password" type="password" autocomplete="current-password" required
-                                        class="rounded relative block w-full px-3 py-2 border border-' . $bordercolour_3 . ' placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:z-10 text-sm"
+                                        class="rounded relative block w-full px-3 py-2 border border-' . $bordercolours[2] . ' placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:z-10 text-sm"
                                         placeholder="' . langkit("password") . '">
                                 </div>
                             </div>

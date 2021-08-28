@@ -6,9 +6,9 @@ if ($_GET['loc'] == "check") {
     if (isset($_POST['email']) && isset($_POST['password'])) {
         include_once "scripts/phpbg/sql-pdo/getuserdat.php";
         include_once "scripts/phpbg/sql-pdo/secureit.php";
-        echo('
-        <p>loading login..</p>
-    ');
+
+        echo('<p>loading login..</p>');
+
         $_SESSION['email'] = $_POST['email'];
         $_SESSION['password'] = $_POST['password'];
         $_POST['email'] = null;

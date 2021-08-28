@@ -45,33 +45,28 @@ echo('
                 </div>
             </div>
 ');
-echo("Found " . $amount . " records");
+echo("Found $amount records");
 if ($amount < 1) {
     echo('<p class="mt-2 font-semibold">Could not find a record based on your information :(</p>');
 } else {
     while ($chsum < $amount) {
-        $boardtitle = base64_decode($sting[$chsum]["boardtitle"]);
-		$boardtitle = str_replace("<","",$boardtitle);
-        $boardtitle = str_replace("/","",$boardtitle);
-        $boardtitle = str_replace(">","",$boardtitle);
-        $boarddesc = $sting[$chsum]["boarddesc"];
-        $boarddesc = str_replace("<","",$boarddesc);
-        $boarddesc = str_replace("/","",$boarddesc);
-        $boarddesc = str_replace(">","",$boarddesc);
-        $boardauthor = base64_decode($sting[$chsum]["boardauthor"]);
-        $boardauthor = str_replace("<","",$boardauthor);
-        $boardauthor = str_replace("/","",$boardauthor);
-        $boardauthor = str_replace(">","",$boardauthor);
-        echo('
-    <div class="w-auto h-auto m-6 border border-ijp-4">
-    <p class="mx-6 font-semibold">' . $boardtitle . '</p>
-        <div class="cards-desc border rounded border-ijp-2 w-auto h-auto mx-6 mb-2 p-2" id="card-desc' . ($chsum + 1) . '">
-            <p>' . $boarddesc . '</p>
+        $datastates = array(base64_decode($sting[$chsum]["boardtitle"]),$sting[$chsum]["boarddesc"],$boardauthor = base64_decode($sting[$chsum]["boardauthor"]));
+        for ($i = 0; $i < count($datastates); $i++) {
+            $datastates[$i] = str_replace("<","",$datastates[$i]);
+            $datastates[$i] = str_replace("/","",$datastates[$i]);
+            $datastates[$i] = str_replace(">","",$datastates[$i]);
+        }
+
+        echo("
+    <div class=\"w-auto h-auto m-6 border border-ijp-4\">
+    <p class=\"mx-6 font-semibold\">$datastates[0]</p>
+        <div class=\"cards-desc border rounded border-ijp-2 w-auto h-auto mx-6 mb-2 p-2\" id=\"card-desc" . ($chsum + 1) . "\">
+            <p>$boarddesc</p>
         </div>
-    <p class="text-sm">Author: ' . $boardauthor . '</p>
+    <p class=\"text-sm\">Author: $boardauthor</p>
     </div>
         
-');
+");
         $chsum++;
     }
     echo('<p class="font-semibold">This is the end...</p>');

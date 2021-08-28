@@ -6,13 +6,11 @@ $titleconcat = $tcc . basename($_SERVER['SCRIPT_NAME'], '.php') == "index" ? $_G
 
 function langaddr($lang)
 {
-    $base = basename($_SERVER['SCRIPT_NAME'], ".php");
-
-    return match ($base) {
-        "index" => $base . "?site=" . $_GET['site'] . "&lang=" . $lang,
-        "register" => $base . "?step=" . $_GET['step'] . "&lang=" . $lang,
-        "changedat" => $base,
-        default => $base . "?lang=" . $lang
+    return match (basename($_SERVER['SCRIPT_NAME'], ".php")) {
+        "index" => basename($_SERVER['SCRIPT_NAME'], ".php") . "?site=" . $_GET['site'] . "&lang=" . $lang,
+        "register" => basename($_SERVER['SCRIPT_NAME'], ".php") . "?step=" . $_GET['step'] . "&lang=" . $lang,
+        "changedat" => basename($_SERVER['SCRIPT_NAME'], ".php"),
+        default => basename($_SERVER['SCRIPT_NAME'], ".php") . "?lang=" . $lang
     };
 }
 
