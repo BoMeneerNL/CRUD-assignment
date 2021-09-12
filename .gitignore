@@ -1,11 +1,8 @@
 node_modules
-bin
-obj
 .idea
 *.psd
 *.rar
-PHP_version/assets/img/*.jpg
-PHP_version/assets/*.*
-PHP_version/assets/userdat/*.*
-PHP_version/scripts/phpbg/sql-pdo/secureit.php
-
+assets/img/*.jpg
+assets/img/*.*
+assets/userdat/*.*
+secureit.php

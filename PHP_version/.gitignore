@@ -1,8 +1,0 @@
-node_modules
-.idea
-assets/img/*.psd
-assets/img/*.rar
-assets/img/*.jpg
-assets/*.*
-assets/userdat/*.*
-secureit.php
