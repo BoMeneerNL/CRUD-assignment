@@ -6,7 +6,7 @@
   "scripts": {
     "tw:build": "tailwindcss build -i ./scripts/cssimporter/tailwind.css -o ./scripts/css/tailwind.css --minify"
   },
-  "author": "BoMeneerNL @ Github",
+  "author": "https://github.com/BoMeneerNL",
   "license": "ISC",
   "dependencies": {
     "autoprefixer": "^10.3.5",
