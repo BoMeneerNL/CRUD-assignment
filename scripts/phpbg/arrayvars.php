@@ -75,32 +75,24 @@ function countryout($countrynl, $countryen, $countryflags)
 function areaout($countrynl, $countryen, $areas)
 {
     $areac = 0;
-    while ($_COOKIE['selecco'] != $countrynl[$areac] && $_COOKIE['selecco'] != $countryen[$areac]) {
+    while ($_COOKIE['selecco'] != $countrynl[$areac] && $_COOKIE['selecco'] != $countryen[$areac])
         $areac++;
-    }
-    $exita = count($areas[$areac]);
-    $exit = 0;
-    $inpar = 0;
-    while ($exit < $exita) {
-        $blyat[$inpar] = ('<option id="' . $areas[$areac][$exit] . '" value="' . $areas[$areac][$exit] . '">' . $areas[$areac][$exit] . '</option>');
-        $exit++;
-        $inpar++;
-    }
-    $cyka = implode($blyat);
-    return $cyka;
+
+    for($i=0 ; $i < count($areas[$areac]) ; $i++)
+        $blyat[$i] = ('<option id="' . $areas[$areac][$i] . '" value="' . $areas[$areac][$i] . '">' . $areas[$areac][$i] . '</option>');
+
+    return implode($blyat);
 }
 
 //Function does not import country_en because this import is only for count() which has (afaik) no difference between those 2 arrays
-function step2check($contrynl, $areas)
+function step2check($contrynl, $areas): bool
 {
     $gotten1 = null;
     $gotten2 = null;
     $ccount = 0;
-    $ccountd = count($contrynl);
-    while ($ccount < $ccountd || $gotten1 == true) {
+    while ($ccount < count($contrynl) || $gotten1) {
         if ($contrynl[$ccount] == $_SESSION['reg_country']) {
             $gotten1 = true;
-            $ccountd = -1;
             break;
         } else {
             $ccount++;
@@ -116,5 +108,5 @@ function step2check($contrynl, $areas)
             $jefferson2++;
         }
     }
-    return $gotten1 && $gotten2 ? true : false;
+    return $gotten1 && $gotten2;
 }
